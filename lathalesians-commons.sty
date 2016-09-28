@@ -1,0 +1,181 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-commons}[2016/09/24 LaThalesians Commons]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Use the kvoptions package to process our package's key-value options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{
+    family=LATCOMMONS,
+    prefix=LATCOMMONS@
+}
+
+\DeclareBoolOption[true]{usecolour}
+\DeclareStringOption[.5,0,0]{defncolour}
+\DeclareStringOption[0,0,.5]{anauthorcolour}
+\DeclareStringOption[1,0,0]{nbcolour}
+
+\ProcessKeyvalOptions*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Import whatever other packages we need
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NB: xcolor must be "required" before tikz or pstricks
+\ifLATCOMMONS@usecolour
+\else
+    \PassOptionsToPackage{monochrome}{xcolor}
+\fi
+\RequirePackage{xcolor}
+
+% \DeclareMathOperator
+\RequirePackage{amsmath}
+
+% \newmdenv
+\RequirePackage{mdframed}
+
+% \DeclareDocumentCommand
+\RequirePackage{xparse}
+
+% \url
+\RequirePackage{url}
+
+% \index (e.g. required for \defn)
+\RequirePackage{multind}
+
+% \xspace
+\RequirePackage{xspace}
+% The above package addresses the problem described in
+% http://tex.stackexchange.com/questions/17872/problem-with-newcommand-no-space-after-calling-new-command-in-the-compiled-tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vanity: by analogy with \TeX and \LaTeX, we define \LaThalesians
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The \LaThalesians logo is based on \LaTeX from ltlogos.dtx:
+\DeclareRobustCommand{\LaThalesians}{L\kern-.36em%
+        {\sbox\z@ T%
+         \vbox to\ht\z@{\hbox{\check@mathfonts
+                              \fontsize\sf@size\z@
+                              \math@fontsfalse\selectfont
+                              A}%
+                        \vss}%
+        }%
+        \kern-.15em%
+        Thalesians\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shortcuts for some frequently used LaTeX commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ul}{\underline}
+
+% See http://tex.stackexchange.com/questions/24132/overline-outside-of-math-mode
+\DeclareDocumentCommand\ol{m}{%
+    \ifmmode\overline{#1}%
+    \else$\overline{\hbox{#1}}$%
+    \fi
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareDocumentCommand \defn { m o o o o }{%
+    \textcolor[rgb]{\LATCOMMONS@defncolour}{\textbf{#1}}%
+    \IfNoValueTF {#2}%
+    {%
+        \index{general}{#1}%
+    }%
+    {\index{general}{#2}\IfNoValueTF {#3}%
+        {}%
+        {\index{general}{#3}\IfNoValueTF {#4}%
+            {}%
+            {\index{general}{#4}\IfNoValueTF {#5}%
+                {}%
+                {\index{general}{#5}}%
+            }%
+        }%
+    }%
+}
+
+\DeclareDocumentCommand \anauthor { m o o o o }{%
+    \textcolor[rgb]{\LATCOMMONS@anauthorcolour}{\textbf{#1}}%
+    \IfNoValueTF {#2}%
+    {%
+        \index{authors}{#1}%
+    }%
+    {\index{authors}{#2}\IfNoValueTF {#3}%
+        {}%
+        {\index{authors}{#3}\IfNoValueTF {#4}%
+            {}%
+            {\index{authors}{#4}\IfNoValueTF {#5}%
+                {}%
+                {\index{authors}{#5}}%
+            }%
+        }%
+    }%
+}
+
+\DeclareDocumentCommand \nb { m }{%
+    \textcolor[rgb]{\LATCOMMONS@nbcolour}{\emph{#1}}%
+}
+
+\newcommand{\atitle}{\textit}
+
+\newcommand{\commentary}{\textit}
+
+\newcommand{\species}{\textit}
+
+\newcommand{\french}{\textit}
+\newcommand{\german}{\textit}
+\newcommand{\latin}{\textit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands to add entries to indices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareDocumentCommand \generalindexentry { m }{%
+    \index{general}{#1}%
+}
+
+\DeclareDocumentCommand \authorsindexentry { m }{%
+    \index{authors}{#1}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Long and short quote environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{shortquote}{%
+    \begin{quote}%
+}{%
+    \end{quote}%
+}
+
+\newmdenv[%
+    backgroundcolor=green!3,
+    linecolor=green!50,
+    outerlinewidth=1pt,
+    roundcorner=5mm,
+    skipabove=\baselineskip,
+    skipbelow=\baselineskip,
+]{longquotemdenv}
+
+\newenvironment{longquote}{%
+    \begin{longquotemdenv}%
+}{%
+    \end{longquotemdenv}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard typesetting for commonly used abbreviations and phrases
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareRobustCommand{\eg}{e.g.\xspace}
+\DeclareRobustCommand{\etc}{etc.\xspace}
+\DeclareRobustCommand{\ie}{i.e.\xspace}
+\DeclareRobustCommand{\interalia}{\latin{inter alia}\xspace}
+\DeclareRobustCommand{\viz}{\latin{viz.}\xspace}

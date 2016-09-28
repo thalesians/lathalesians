@@ -1,0 +1,138 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-domains}[2016/09/24 LaThalesians Domains]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Use the kvoptions package to process our package's key-value options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{
+    family=LATDOMAINS,
+    prefix=LATDOMAINS@
+}
+
+\DeclareStringOption[b]{ssfnotation}
+
+\ProcessKeyvalOptions*
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Import whatever other packages we need
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NB: amsthm must be "required" before txfonts:
+\RequirePackage{amsthm}
+
+% \sqsubset, \bigsqcap, ...:
+\RequirePackage{txfonts}
+
+% \rotatebox:
+\RequirePackage{rotating}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Poset binary relation and derived symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lteq}{\sqsubseteq}
+\newcommand{\lt}{\sqsubset}
+\newcommand{\eq}{=}
+\newcommand{\gt}{\sqsupset}
+\newcommand{\gteq}{\sqsupseteq}
+\newcommand{\wb}{\ll}
+\newcommand{\wa}{\gg}
+
+% Aliases:
+\newcommand{\lesseq}{\lteq}
+\newcommand{\less}{\lt}
+\newcommand{\greatereq}{\gteq}
+\newcommand{\greater}{\gt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Way-below relation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\waybelow}{\wb}
+\newcommand{\wayabove}{\wa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Meets (suprema) and joins (infima)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\join}{\sqcup}
+\newcommand{\meet}{\sqcap}
+\newcommand{\setjoin}{\bigsqcup}
+\newcommand{\setmeet}{\bigsqcap}
+\newcommand{\dsetjoin}{\bigsqcup\nolimits^{\uparrow}}
+\newcommand{\fsetmeet}{\bigsqcap\nolimits^{\downarrow}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Upward and downward closures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Domain-theoretic upward closure w.r.t. below:
+\newcommand{\aboveset}[1]{\ensuremath{{\uparrow#1}}}
+% Domain-theoretic downward closure w.r.t. below:
+\newcommand{\belowset}[1]{\ensuremath{{\downarrow#1}}}
+
+% Creating \twoheaddownarrow from \twoheadrightarrow using graphicx:
+\newcommand{\PRIVATEturndown}[1]{\rotatebox[origin=c]{270}{\ensuremath#1}}
+\newcommand{\PRIVATEturnup}[1]{\rotatebox[origin=c]{90}{\ensuremath#1}}
+\newcommand{\PRIVATEtwoheaddownarrow}{\PRIVATEturndown{\twoheadrightarrow}}
+\newcommand{\PRIVATEtwoheaduparrow}{\PRIVATEturnup{\twoheadrightarrow}}
+
+% Domain-theoretic upward closure w.r.t. way-below:
+\newcommand{\wayaboveset}[1]{\ensuremath{{\PRIVATEtwoheaduparrow#1}}}
+% Domain-theoretic downward closure w.r.t. way-below:
+\newcommand{\waybelowset}[1]{\ensuremath{{\PRIVATEtwoheaddownarrow#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Domain-theoretic single-step functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% There are at least two notations for single-step functions frequently used in
+% domain-theoretic literature. The first notation is that found in, inter alia,
+% "The way-below relation of function spaces over semantic domains" (1997) by
+% Erker et al:
+\newcommand{\ssfa}[2]{\ensuremath{\left(#1 \searrow #2\right)}}
+
+% The second notation is used in, inter alia, "Weak topology and a
+% differentiable operator for Lipschitz maps" (2008) by Edalat:
+\newcommand{\ssfb}[2]{\ensuremath{#2 \chi_{#1}}}
+
+\newcommand{\ssf}[2]{%
+    \if\LATDOMAINS@ssfnotation a%
+        \ssfa{#1}{#2}%
+    \else%
+        \ssfb{#1}{#2}%
+    \fi%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Various useful domain-theoretic and topological spaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Topological function space:
+\newcommand{\topfuncspace}[2]{\ensuremath{C(#1, #2)}}
+% Domain-theoretic function space:
+\newcommand{\domfuncspace}[2]{\ensuremath{[#1 \rightarrow #2]}}
+% Interval domain:
+\newcommand{\Intervals}[1]{\ensuremath{{\mathbf{I} #1}}}
+% Upper space:
+\newcommand{\UpperSpace}[1]{\ensuremath{{\mathbf{U} #1}}}
+% Probabilistic power domain:
+\newcommand{\PPD}[1]{\ensuremath{{\mathbf{P}\left(#1\right)}}}
+% Normalised probabilistic power domain:
+\newcommand{\NPPD}[1]{\ensuremath{{\mathbf{P}^1\left(#1\right)}}}
+% The set of maximal elements:
+\newcommand{\Maximals}[1]{\ensuremath{{\mbox{Max}\left(#1\right)}}}
+% The set of minimal elements:
+\newcommand{\Minimals}[1]{\ensuremath{{\mbox{Min}\left(#1\right)}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Consistency predicate
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This notation is used in "Domain theory and differential calculus" (2002) by
+% Edalat and Lieutier, among other places.
+
+\newcommand{\Con}{\ensuremath{\mbox{Con}}}

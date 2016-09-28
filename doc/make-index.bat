@@ -1,0 +1,2 @@
+makeindex general
+makeindex authors

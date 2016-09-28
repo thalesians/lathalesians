@@ -1,0 +1,189 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-analysis}[2016/09/24 LaThalesians Analysis]
+
+% \underset, etc.
+\RequirePackage{amsmath}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Equality by definition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\defeq}{:=}
+\newcommand{\eqdef}{=:}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Equivalence, limits, etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\idwith}{\leftrightarrow}
+\newcommand{\tendsto}{\rightarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Logical symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Implies}{\Rightarrow}
+\newcommand{\OnlyIf}{\Implies}
+\newcommand{\ImpliedBy}{\Leftarrow}
+\newcommand{\If}{\ImpliedBy}
+\newcommand{\Iff}{\Leftrightarrow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some important sets
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Natural numbers without specifying the 0 convention
+\newcommand{\N}{\mathbb{N}}
+% Natural numbers including 0
+\newcommand{\Nz}{\mathbb{N}^0}
+% Nonzero natural numbers
+\newcommand{\Nnz}{\mathbb{N}^*}
+% Integers
+\newcommand{\Z}{\mathbb{Z}}
+% Positive integers
+\newcommand{\Zp}{\mathbb{Z}^+}
+% Nonnegative integers
+\newcommand{\Znn}{\mathbb{Z}^+_0}
+% Negative integers
+\newcommand{\Zn}{\mathbb{Z}^-}
+% Nonzero integers
+\newcommand{\Znz}{\mathbb{Z}^*}
+% Rationals
+\newcommand{\Q}{\mathbb{Q}}
+% Positive rationals
+\newcommand{\Qp}{\mathbb{Q}^+}
+% Nonnegative rationals
+\newcommand{\Qnn}{\mathbb{Q}^+_0}
+% Negative rationals
+\newcommand{\Qn}{\mathbb{Q}^-}
+% Nonzero rationals
+\newcommand{\Qnz}{\mathbb{Q}^*}
+% Real numbers
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+% Positive real numbers
+\newcommand{\Rp}{\ensuremath{\mathbb{R}^+}}
+% Nonnegative real numbers
+\newcommand{\Rnn}{\ensuremath{\mathbb{R}^+_0}}
+% Negative real numbers
+\newcommand{\Rn}{\ensuremath{\mathbb{R}^-}}
+% Nonzero real numbers
+\newcommand{\Rnz}{\ensuremath{\mathbb{R}^*}}
+% Extended real numbers
+\newcommand{\Rx}{\ensuremath{\overline{\mathbb{R}}}}
+\newcommand{\Rpx}{\ensuremath{\overline{\mathbb{R}}^+}}
+\newcommand{\Rnnx}{\ensuremath{\overline{\mathbb{R}}^+_0}}
+\newcommand{\Rnx}{\ensuremath{\overline{\mathbb{R}}^-}}
+\newcommand{\Rnzx}{\ensuremath{\overline{\mathbb{R}}^*}}
+% Complex numbers
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+% Nonzero complex numbers
+\newcommand{\Cnz}{\ensuremath{\mathbb{C}^*}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sets and collections
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Name of a collection
+\DeclareDocumentCommand\Collection{m}{\ensuremath{\mathcal{#1}}}
+% Name of a set
+\DeclareDocumentCommand\Set{m}{\ensuremath{#1}}
+
+% Such that
+\newcommand{\st}{\ | \ }
+
+% Definition of a collection
+\DeclareDocumentCommand \collection { m o }{%
+    \IfNoValueTF {#2}%
+        {\ensuremath{\left\{ #1 \right\}}}%
+        {\ensuremath{\left\{ #1 \st #2 \right\}}}%
+}
+
+% Definition of a set
+\DeclareDocumentCommand \set { m o }{%
+    \IfNoValueTF {#2}%
+        {\ensuremath{\left\{ #1 \right\}}}%
+        {\ensuremath{\left\{ #1 \st #2 \right\}}}%
+}
+
+% Name of an element of a sequence
+\DeclareDocumentCommand \seqel { m o o }{%
+    \IfNoValueTF {#3} {%
+        \IfNoValueTF {#2}%
+            {\ensuremath{\left( #1 \right)}}%
+            {\ensuremath{\left( #1 \right)_{#2}}}%
+    }{%
+        \ensuremath{\left( #1 \right)_{#2}^{#3}}%
+    }%
+}
+
+% Definition of a sequence
+\newcommand{\sequence}[1]{\ensuremath{\left( #1 \right)}}
+% Definition of a tuple
+\newcommand{\tuple}[1]{\sequence{#1}}
+
+% Subset
+\newcommand{\sset}{\subseteq}
+% Superset
+\newcommand{\Sset}{\supseteq}
+% Subset
+\newcommand{\psset}{\subsetneq}
+% Superset
+\newcommand{\pSset}{\supsetneq}
+
+% Set difference
+\newcommand{\setdiff}{\setminus}
+% Symmetric difference
+\newcommand{\symmdiff}{\triangle}
+
+% Complement of a set
+\newcommand{\setcomplement}[1]{\ensuremath{#1^{\mathsf{c}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General topology
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Closure of a set
+\newcommand{\closure}[1]{\ensuremath{\overline{#1}}}
+% Interior of a set
+\newcommand{\interior}[1]{\ensuremath{#1^\circ}}
+
+% Embedding
+\newcommand{\embed}{\hookrightarrow}
+\newcommand{\embedsinto}{\embed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Function type
+\DeclareDocumentCommand \functype { o m m }{%
+    \ensuremath{%
+        \IfNoValueTF {#1}%
+            {#2 \to #3}%
+            {#1 : #2 \to #3}%
+    }%
+}
+
+% Function definition
+\DeclareDocumentCommand \funcdefn { o m m }{%
+    \ensuremath{%
+        \IfNoValueTF {#1}%
+            {#2 \mapsto #3}%
+            {#1 : #2 \mapsto #3}%
+    }%
+}
+
+% The zero function
+\newcommand{\zerofunc}{\ensuremath{\mathbf{0}}}
+% The indicator function of a given set
+\newcommand{\indfunc}[1]{\ensuremath{\mathbf{1}_{#1}}}
+
+% The starred version of \DeclareMathOperator - have limits typeset beneath
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Normed vector spaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}

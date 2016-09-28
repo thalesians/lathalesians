@@ -1,0 +1,56 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-font}[2016/09/24 LaThalesians Font]
+
+% txfonts must be required before mathpazo:
+\RequirePackage{txfonts}
+
+% txfonts introduces some domain theory symbols. We require this package here
+% so that it doesn't matter whether this package is loaded before or after
+% lathalesians-domains, since lathalesians-domains does not require mathpazo
+% and can be used without lathalesians-font.
+
+% Set Palatino font as default roman. Math in Palatino where possible:
+\RequirePackage{mathpazo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% From Wikipedia:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Palatino is the name of a large typeface family that began as an old style
+% serif typeface designed by Hermann Zapf initially released in 1948 by the
+% Linotype foundry. In 1999 Zapf revised Palatino for Linotype and Microsoft
+% called Palatino Linotype. The revised family incorporated extended Latin,
+% Greek, Cyrillic character sets.
+%
+% Under the collaboration of Zapf and Akira Kobayashi the Palatino typeface
+% family was expanded. Linotype released the Palatino nova, Palatino Sans, and
+% Palatino Sans Informal families, expanding the Palatino typeface families to
+% include humanist sans-serif typefaces. Palatino nova was released in 2005,
+% while the others were released in 2006.
+%
+% Named after 16th century Italian master of calligraphy Giambattista Palatino,
+% Palatino is based on the humanist fonts of the Italian Renaissance, which
+% mirror the letters formed by a broad nib pen; this gives a calligraphic grace.
+% But where the Renaissance faces tend to use smaller letters with longer
+% vertical lines (ascenders and descenders) with lighter strokes, Palatino has
+% larger proportions, and is considered much easier to read.
+%
+% It remains one of the most widely-used (and copied) text typefaces, has been
+% adapted to virtually every type of technology, and is one of the ten most used
+% serif typefaces. It is one of several typefaces by Zapf, each showing
+% influence of the Italian Renaissance letter forms. The group includes
+% Palatine, Sistina, Michaelangelo tiling, and Aldus, which takes inspiration
+% from printing types cut by Francesco Griffo c. 1495 in the print shop of Aldus
+% Manutius.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% See also the packages newpxtext, newpxmath. Haven't been able to get them to
+% work yet with lathalesians.
+
+% This must be required after both txfonts and mathmazo:
+\RequirePackage{tipa}
+% See https://nodisconnect.wordpress.com/2010/06/21/tipa-times-mathpazo-error/
+
+% TIPA is a system for processing IPA (International Phonetic Alphabet) symbols
+% in LaTeX.

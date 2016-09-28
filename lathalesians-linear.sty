@@ -1,0 +1,30 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-linear}[2016/09/24 LaThalesians Linear]
+
+% \intercal, the symbol we use in place of "T" for the transpose
+\RequirePackage{amssymb}
+
+% Transpose
+\newcommand{\transpose}[1]{\ensuremath{#1^{\intercal}}}
+
+% Trace
+\DeclareMathOperator{\tr}{tr}
+
+% Rank
+\DeclareMathOperator{\rank}{rank}
+
+% Nullity
+\DeclareMathOperator{\nul}{nul}
+
+% Diagonal
+\newcommand{\diag}[1]{\ensuremath{#1^\text{(diag)}}}
+
+% Name of a vector
+\DeclareDocumentCommand \V { m }{%
+    \boldsymbol{\mathbf{#1}}%
+}
+
+% Name of a matrix
+\DeclareDocumentCommand \M { m }{%
+    \boldsymbol{\mathbf{#1}}%
+}

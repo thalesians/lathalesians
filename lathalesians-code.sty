@@ -1,0 +1,159 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-code}[2016/09/24 LaThalesians Code]
+
+
+\RequirePackage{caption} % captionsetup, DeclareCaptionFormat
+\RequirePackage{xcolor} % textcolor
+\RequirePackage{xstring} % IfStrEq
+\RequirePackage{listings} % This module provides wrappers around listings
+\RequirePackage{lstbayes} % BUGS language support
+
+
+\newcounter{listing}
+
+
+\definecolor{codeframe}{rgb}{0,0,1}
+\definecolor{outputframe}{rgb}{.803,.360,.360}
+
+
+\DeclareCaptionFormat{snippet}{}
+
+\DeclareCaptionFormat{listing}{%
+    \textcolor{codeframe}{\rule{\dimexpr\textwidth\relax}{1.5pt}}
+    \par\vskip1pt#1#2#3
+    \textcolor{codeframe}{\rule{\dimexpr\textwidth\relax}{.75pt}}
+}
+
+\DeclareCaptionFormat{output}{%
+    \textcolor{outputframe}{\rule{\dimexpr\textwidth\relax}{1.5pt}}
+    \par\vskip1pt#1#2#3
+    \textcolor{outputframe}{\rule{\dimexpr\textwidth\relax}{.75pt}}
+}
+
+
+\captionsetup[lstlisting]{
+    singlelinecheck=false,
+    margin=0pt,
+    font={sf},
+    labelsep=space,
+    labelfont={bf}
+}
+
+
+\lstdefinestyle{lathalesiansbase}{
+    rulecolor=\color{codeframe},
+    basicstyle=\ttfamily,
+    showstringspaces=false,
+    formfeed=\newpage,
+    tabsize=4,
+    commentstyle=\itshape,
+    breaklines=false
+}
+
+
+\lstdefinestyle{lathalesians}{
+    style=lathalesiansbase,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+
+
+\lstdefinestyle{withcaption}{
+    style=lathalesians,
+    basicstyle=\ttfamily\footnotesize,
+    frame=bottomline,
+    framerule=1.5pt,
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=2,
+    numbersep=5pt
+}
+
+\lstdefinestyle{withoutcaption}{
+    style=lathalesians,
+    basicstyle=\ttfamily\footnotesize,
+    frame=lines,
+    framerule=.75pt,
+    numbers=none
+}
+
+
+\lstdefinestyle{plain}{
+    language={}
+}
+\lstdefinestyle{output}{
+    language={},
+    rulecolor=\color{outputframe}
+}
+\lstdefinestyle{BUGS}{
+    language=BUGS
+}
+\lstdefinestyle{CPP}{
+    language=C++
+}
+\lstdefinestyle{Java}{
+    language=Java
+}
+\lstdefinestyle{LaTeX}{
+    language=TeX,
+    morekeywords={begin}
+}
+\lstdefinestyle{Python}{
+    language=Python,
+    morekeywords={lambda}  % Comma-separated
+}
+\lstdefinestyle{q}{
+    language={}
+}
+
+
+\DeclareDocumentCommand\code{o}{%
+    \IfNoValueTF{#1}%
+        {\lstinline[style=lathalesiansbase]}%
+        {\lstinline[style=lathalesiansbase,#1]}%
+}
+\DeclareDocumentCommand\program{o}{%
+    \IfNoValueTF{#1}%
+        {\lstinline[style=lathalesiansbase]}%
+        {\lstinline[style=lathalesiansbase,#1]}%
+}
+\DeclareDocumentCommand\file{o}{%
+    \IfNoValueTF{#1}%
+        {\lstinline[style=lathalesiansbase]}%
+        {\lstinline[style=lathalesiansbase,#1]}%
+}
+
+
+\lstnewenvironment{snippet}[2][]{%
+\captionsetup{format=snippet}\lstset{style=withoutcaption,style=#2,#1}}
+{}
+\lstnewenvironment{Snippet}[2][caption=~]{%
+\renewcommand\lstlistingname{Listing}%
+\setcounter{lstlisting}{\value{listing}}%
+\IfStrEq{#2}{output}{\captionsetup{format=output}}{\captionsetup{format=listing}}\lstset{style=withcaption,style=#2,#1}}
+{\addtocounter{listing}{1}}
+
+% We can't next snippet environments, but we can nest snippet inside snippetx:
+\lstnewenvironment{snippetx}[2][]{%
+\captionsetup{format=snippet}\lstset{style=withoutcaption,style=#2,#1}}
+{}
+\lstnewenvironment{Snippetx}[2][caption=~]{%
+\renewcommand\lstlistingname{Listing}%
+\setcounter{lstlisting}{\value{listing}}%
+\IfStrEq{#2}{output}{\captionsetup{format=output}}{\captionsetup{format=listing}}\lstset{style=withcaption,style=#2,#1}}
+{\addtocounter{listing}{1}}
+
+
+\newcommand{\source}[3][]{%
+\begingroup%
+\captionsetup{format=snippet}\lstinputlisting[style=withoutcaption,style=#2,#1]{#3}%
+\endgroup%
+}
+\newcommand{\Source}[3][caption=~]{%
+\begingroup%
+\renewcommand\lstlistingname{Listing}%
+\setcounter{lstlisting}{\value{listing}}%
+\IfStrEq{#2}{output}{\captionsetup{format=output}}{\captionsetup{format=listing}}\lstinputlisting[style=withcaption,style=#2,#1]{#3}%
+\addtocounter{listing}{1}%
+\endgroup%
+}

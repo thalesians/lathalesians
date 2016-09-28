@@ -1,0 +1,138 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-probability}[2016/09/24 LaThalesians Probability]
+
+% Sample space
+\newcommand{\SampleSpace}{\ensuremath{\Omega}}
+
+% Measures
+\DeclareDocumentCommand \Measures { o }{%
+    \IfNoValueTF {#1}%
+        {\ensuremath{\mathcal{M}}}%
+        {\ensuremath{\mathcal{M}\left( #1 \right)}}%
+}
+
+% Probability measures
+\DeclareDocumentCommand \ProbMeasures { o }{%
+    \IfNoValueTF {#1}%
+        {\ensuremath{\mathcal{P}}}%
+        {\ensuremath{\mathcal{P}\left( #1 \right)}}%
+}
+
+% Borel sigma-algebra
+\DeclareDocumentCommand \Borel { o }{%
+    \IfNoValueTF {#1}%
+        {\ensuremath{\mathcal{B}}}%
+        {\ensuremath{\mathcal{B}\left( #1 \right)}}%
+}
+
+% Time and state of a stochastic process
+\newcommand{\Time}{\mathbb{T}}
+\newcommand{\State}{\mathbb{S}}
+
+\DeclareRobustCommand{\aew}{a.e.\xspace}
+\DeclareRobustCommand{\as}{a.s.\xspace}
+
+% Convergence in law
+\newcommand{\convlaw}{\ensuremath{\overset{\sim}{\rightarrow}}}
+% Convergence in probability
+\newcommand{\convprob}{\ensuremath{\overset{p}{\rightarrow}}}
+% Convergence almost surely (a.s.)
+\newcommand{\convas}{\ensuremath{\overset{\text{a.s.}}{\rightarrow}}}
+% Weak convergence
+\newcommand{\convweak}{\ensuremath{\Rightarrow}}
+
+% Support
+\DeclareMathOperator{\support}{supp}
+
+% Probability
+\DeclareDocumentCommand \Prob { o }{
+    \IfNoValueTF {#1}
+        {\ensuremath{\mathbb{P}}}
+        {\ensuremath{\mathbb{P}\left[ #1 \right]}}
+}
+
+% Probability measure
+\DeclareDocumentCommand \ProbMeasure { m o }{
+    \IfNoValueTF {#2}
+        {\ensuremath{\mathbb{#1}}}
+        {\ensuremath{\mathbb{#1}\left[ #2 \right]}}
+}
+
+% Conditional probability or expectation
+\newcommand{\given}{\ | \ }
+
+% Expectation
+\DeclareDocumentCommand \E { o o }{
+    \IfNoValueTF {#1}
+        {\ensuremath{\mathbb{E}}}
+        {\IfNoValueTF {#2}
+            {\ensuremath{\mathbb{E}\left[ #1 \right]}}
+            {\ensuremath{\mathbb{E}_{#2}\left[ #1 \right]}}
+        }
+}
+
+% Variance
+\DeclareDocumentCommand \Var { o o }{
+    \IfNoValueTF {#1}
+        {\ensuremath{\mathsf{Var}}}
+        {\IfNoValueTF {#2}
+            {\ensuremath{\mathsf{Var}\left[ #1 \right]}}
+            {\ensuremath{\mathsf{Var}_{#2}\left[ #1 \right]}}
+        }
+}
+
+% Covariance
+\DeclareDocumentCommand \Cov { o o }{
+    \IfNoValueTF {#1}
+        {\ensuremath{\mathsf{Cov}}}
+        {\IfNoValueTF {#2}
+            {\ensuremath{\mathsf{Cov}\left[ #1 \right]}}
+            {\ensuremath{\mathsf{Cov}_{#2}\left[ #1 \right]}}
+        }
+}
+
+% Correlation
+\DeclareDocumentCommand \Cor { o o }{
+    \IfNoValueTF {#1}
+        {\ensuremath{\mathsf{Cor}}}
+        {\IfNoValueTF {#2}
+            {\ensuremath{\mathsf{Cor}\left[ #1 \right]}}
+            {\ensuremath{\mathsf{Cor}_{#2}\left[ #1 \right]}}
+        }
+}
+
+% Distributed as
+\newcommand{\distributed}{\ \sim \ }
+
+% Normal distribution
+\DeclareDocumentCommand \Normal { o m m }{%
+    \ensuremath{%
+        \IfNoValueTF {#1}%
+        {%
+            \mathcal{N}\left(#2, #3\right)
+        }%
+        {%
+            \mathcal{N}\left(#1; #2, #3\right)
+        }%
+    }%
+}
+
+% Wide sense
+\DeclareDocumentCommand \WS { m m }{%
+    \ensuremath{%
+        \mathcal{WS}\left(#1, #2\right)
+    }%
+}
+
+% Probability density function of normal distribution
+\DeclareDocumentCommand \normalpdf { o m m }{%
+    \ensuremath{%
+        \IfNoValueTF {#1}%
+        {%
+            \varphi\left(#2, #3\right)
+        }%
+        {%
+            \varphi\left(#1; #2, #3\right)
+        }%
+    }%
+}

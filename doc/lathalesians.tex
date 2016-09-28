@@ -1,0 +1,899 @@
+% TODO Remove the conflict between lathalesians-domains and lathalesians-code
+% TODO Building the general and authors indices
+% TODO Bibliography
+% TODO Environment variables
+% TODO WinEdt configuration
+% TODO Use the article document class
+% TODO Temporarily remove custom document classes
+% TODO Get this to work again.
+% \begin{equation*}
+% \diff{x} f(x)
+% \end{equation*}
+
+
+\documentclass[10pt]{article}
+
+\usepackage{multind}
+
+\usepackage[usecolour=true]{lathalesians-commons}
+\usepackage[usegeometry=true]{lathalesians-formatting}
+\usepackage{lathalesians-theorems}
+\usepackage{lathalesians-code}
+\usepackage{lathalesians-analysis}
+\usepackage{lathalesians-linear}
+\usepackage{lathalesians-probability}
+\usepackage{lathalesians-categories}
+\usepackage{lathalesians-font}
+\usepackage{lathalesians-domains}
+\usepackage{lathalesians-computability}
+
+
+\usepackage{longtable}
+\usepackage{url}
+
+\title{\LaThalesians: The Thalesians' \LaTeX~library}
+\author{Copyright~\copyright~2016, Thalesians Ltd \\
+Copyright \copyright~2016, Paul~Alexander~Bilokon\footnote{Current maintainer, contactable on \textsf{paul@thalesians.com}}}
+\date{2016.09.24}
+
+\makeindex{general}
+\makeindex{authors}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Overview}
+
+The \LaThalesians library comprises a heterogeneous collection of \LaTeX~packages, which facilitate the typesetting of the Thalesians' work in mathematics, computer science, and finance. It was originally developed by Paul~Bilokon to support his academic and professional work and the library's scope still reflects some of his personal biases, \viz:
+\begin{itemize}
+\item mathematical finance,
+\item econometrics,
+\item programming,
+\item scientific computing,
+\item algorithms,
+\item statistics,
+\item stochastic analysis,
+\item probability theory,
+\item domain theory,
+\item computability theory.
+\end{itemize}
+
+It is hoped that, as more people get involved in the development and maintenance of this library, its scope will become more balanced and will more faithfully reflect the diverse activities of the Thalesians.
+
+Rather than being structured as a single package, \LaThalesians is a suite of packages, each package name starting with \code{lathalesians-}. Thus the modules may be used individually, depending on the user's specific needs. \nb{Modularity} is one of the design principles that guided us in this library's development.
+
+Another one is \nb{simplicity}: tasks that occur often in our research and development work should be made easy. The syntax should be straightforward and easy to remember. \LaTeX~commands that we type in often should be brief.
+
+But not too brief: they should still be unambiguous and easy to remember. \nb{Readability} and \nb{clarity} are also important to us. Finding the right balance between simplicity and readability is an art more than a science.
+
+We are believers in \nb{domain-specific languages}. Therefore we often define \LaTeX commands to represent the concepts from a particular research area rather than typesetting instructions. This is done at the cost of introducing more words into our language. We believe that these are the very words that we need. Let's express what things are, rather than what they should look like.
+
+Finally, we believe that \nb{truth} and \nb{beauty} should go hand in hand. Both should be present in the content. Form should do justice to the content's truth and present it in a way that is beautiful. We don't claim that we have achieved this in \LaThalesians. However, this is indeed our striving, our intention. We will be very much obliged for any recommendations on how to make the library's output more aesthetically pleasing.
+
+We, the Thalesians, would be very much obliged to you for your contributions to this library. It is far from perfect now. In many ways it is quite defective. Please help us make it both useful and beautiful.
+
+This library is made available under the Apache License Version 2.0 (the ``License''). You may obtain a copy of the License at \url{http://www.apache.org/licenses/LICENSE-2.0}
+
+\section{Usage}
+
+To use each individual package, simply include the appropriate \code!\usepackage! in the preamble of your document, before \code!\begin{document}!, for example:
+\begin{snippet}{LaTeX}
+\usepackage{lathalesians-commons}
+\end{snippet}
+Some of the packages take parameters as a comma-separated key-value pairs list. In this case, the syntax is as follows:
+\begin{snippet}{plain}
+\usepackage[<key=value list>]{<package name>}
+\end{snippet}
+Here is an example of such usage:
+\begin{snippet}{LaTeX}
+\usepackage[usecolour=true,defncolour={0,.5,0}]{lathalesians-commons}
+\end{snippet}
+
+\section{Packages}
+
+The bulk of the library consists in \LaTeX~packages, each named \program{lathalesians-xxx.sty}. In this section we shall go through each individual package, starting with the most generally useful.
+
+\subsection{\program{lathalesians-commons}: general-purpose utilities for \LaTeX}
+
+This package defines some general-purpose commands and environments. For example, it defines the \code{\defn} command, which highlights definitions and add the defined terms to the \code{general} index. It also contains commands for basic typesetting, such as underlining, overlining, etc. Some of these commands are shorter aliases of existing \LaTeX~commands.
+
+\subsubsection{Usage}
+
+\begin{snippet}{plain}
+\usepackage[<key=value list>]{lathalesians-commons}
+\end{snippet}
+The following options are allowed in the comma-separated key=value list:
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Option                & Possible values           & Default value   & Description                     \\
+\hline
+\code{usecolour}      & \code{true}, \code{false} & \code{true}     & use colour, \eg in definitions \\
+\code{defncolour}     & \code!{r,g,b}!            & \code!{.5,0,0}! & colour for terms being defined  \\
+\code{anauthorcolour} & \code!{r,g,b}!            & \code!{0,0,.5}! & colour for author names         \\
+\code{nbcolour}       & \code!{r,g,b}!            & \code!{1,0,0}!  & colour for emphasised text      \\
+\hline
+\caption{Options supported by \program!lathalesians-commons!}
+\end{longtable}
+\end{footnotesize}
+Example:
+\begin{snippet}{LaTeX}
+\usepackage[usecolour=true,defncolour={0,.5,0}]{lathalesians-commons}
+\end{snippet}
+
+\subsubsection{Summary of commands and environments}
+
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Command                   & Example: code                           & Example: {\LaTeX}ed              & Description                  \\
+\hline
+\code{\LaThalesians}      & \code{\LaThalesians}                    & \LaThalesians                    & the name of this library     \\
+\code{\ol}                & \code!\ol{Thales}!, \code!$\ol{123}$!   & \ol{Thales}, $\ol{123}$          & overline                     \\
+\code{\ul}                & \code!\ul{Thales}!, \code!$\ul{123}$!   & \ul{Thales}, $\ul{123}$          & underline                    \\
+\code{\defn}              & \code!\defn{$G_{\delta}$ set}!          & \defn{$G_{\delta}$ set}          & definition                   \\
+                          &                                         &                                  & (see details below)          \\
+\code{\anauthor}          & \code!\anauthor{Georg~Cantor}!          & \anauthor{Georg~Cantor}[]        & reference to an author       \\
+                          &                                         &                                  & (see details below)          \\
+\code{\generalindexentry} & see below                               & see below                        & general index entry          \\
+\code{\authorsindexentry} & see below                               & see below                        & authors index entry          \\
+\code{\nb}                & \code|\nb{Important!}|                  & \nb{Important!}                  & emphasised text              \\
+\code{\atitle}            & \code|\atitle{Functional Analysis}|     & \atitle{Functional Analysis}     & title of a work              \\
+\code{\commentary}        & \code|\commentary{Some comments.}|      & \commentary{Some comments.}      & comments                     \\
+\code{\species}           & \code|\species{Homo sapiens}|           & \species{Homo sapiens}           & biological species           \\
+\code{\french}            & \code|\french{t{\^e}te-{\`a}-t{\^e}te}| & \french{t{\^e}te-{\`a}-t{\^e}te} & inclusions in French         \\
+\code{\german}            & \code|\german{Grundbegriffe}|           & \german{Grundbegriffe}           & inclusions in German         \\
+\code{\latin}             & \code|\latin{inter alia}|               & \latin{inter alia}               & inclusions in Latin          \\
+\code{\shortquote}        & see below                               & see below                        & environment for short quotes \\
+\code{\longquote}         & see below                               & see below                        & environment for long quotes  \\
+\code{\eg}                & \code|\eg|                              & \eg                              &                              \\
+\code{\etc}               & \code|\etc|                             & \etc                             &                              \\
+\code{\ie}                & \code|\ie|                              & \ie                              &                              \\
+\code{\interalia}         & \code|\interalia|                       & \interalia                       &                              \\
+\code{\viz}               & \code|\viz|                             & \viz                             &                              \\
+\hline
+\caption{Summary of commands and environments defined in \program!lathalesians-commons!}
+\end{longtable}
+\end{footnotesize}
+
+\subsubsection{Definitions: \code{\\defn} and \code{\\generalindexentry}}
+
+\code{\defn} formats a defined term and optionally adds it to the index called \code{general}. The syntax
+\begin{snippet}{plain}
+\defn{<defined term>}
+\end{snippet}
+will typeset the \code{<defined term>} as \defn{defined term} and add it to the \code{general} index. To avoid adding the defined term to that index, use the syntax
+\begin{snippet}{plain}
+\defn{<defined term>}[]
+\end{snippet}
+Instead of adding \code{<defined term>} to the \code{general} index, one may add \code{<index entry>} using the following syntax:
+\begin{snippet}{plain}
+\defn{<defined term>}[<index entry>]
+\end{snippet}
+For example,
+\begin{snippet}{LaTeX}
+\defn{Cartesian product}[product!Cartesian]
+\end{snippet}
+will typeset \defn{Cartesian product}[] and add ``product, Cartesian'' to the \code{general} index. One may add up to four index entries in a single \code{\defn} command, for example:
+\begin{snippet}{LaTeX}
+\defn{Cartesian product}[product!Cartesian][Cartesian product|see{product, Cartesian}]
+\end{snippet}
+The above is equivalent to
+\begin{snippet}{LaTeX}
+\defn{Cartesian product}[]\generalindexentry{product!Cartesian}\generalindexentry{Cartesian product|see{product, Cartesian}}
+\end{snippet}
+The command
+\begin{snippet}{plain}
+\generalindexentry{<index entry>}
+\end{snippet}
+will add \code{<index entry>} to the index called \code{general} without adding any text to the body of the document where this command occurs.
+
+\subsubsection{Authors: \code{\\anauthor} and \code{\\authorsindexentry}}
+
+\code{\anauthor} formats the name of an author and optionally adds it to the index called \code{authors}. The syntax
+\begin{snippet}{plain}
+\anauthor{<name of author>}
+\end{snippet}
+will typeset the \code{<name of author>} as \anauthor{name of author}[] and add it to the \code{authors} index. To avoid adding the author's name to that index, use the syntax
+\begin{snippet}{plain}
+\anauthor{<name of author>}[]
+\end{snippet}
+Instead of adding \code{<name of author>} to the \code{authors} index, one may add \code{<index entry>} using the following syntax:
+\begin{snippet}{plain}
+\anauthor{<name of author>}[<index entry>]
+\end{snippet}
+For example,
+\begin{snippet}{LaTeX}
+\anauthor{Georg~Cantor}[Cantor, Georg]
+\end{snippet}
+will typeset \anauthor{Georg~Cantor}[] and add ``Cantor, Georg'' to the \code{authors} index. One may add up to four index entries in a single \code{\anauthor} command, for example:
+\begin{snippet}{LaTeX}
+\anauthor{Georg~Cantor}[Cantor, Georg Ferdinand Ludwig Philipp][Cantor, Georg|see{Cantor, Georg Ferdinand Ludwig Philipp}]
+\end{snippet}
+The above is equivalent to\authorsindexentry{Cantor, Georg Ferdinand Ludwig Philipp}\authorsindexentry{Cantor, Georg|see{Cantor, Georg Ferdinand Ludwig Philipp}}
+\begin{snippet}{LaTeX}
+\anauthor{Georg~Cantor}[]\authorsindexentry{Cantor, Georg Ferdinand Ludwig Philipp}\authorsindexentry{Cantor, Georg|see{Cantor, Georg Ferdinand Ludwig Philipp}}
+\end{snippet}
+The command
+\begin{snippet}{plain}
+\authorsindexentry{<index entry>}
+\end{snippet}
+will add \code{<index entry>} to the index called \code{authors} without adding any text to the body of the document where this command occurs.
+
+\subsubsection{Building indices}
+
+Here is an example of how you can include the indices in your document. Notice that, for the indices to work, you need the package \program{multind}.
+\begin{snippet}{LaTeX}
+\usepackage{multind}
+
+\makeindex{general}
+\makeindex{authors}
+
+\begin{document}
+
+...
+
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{alpha}
+\bibliography{lathalesians-bibliography}
+
+\printindex{general}{Subject index}
+\printindex{authors}{Index of authors}
+
+\end{document}
+\end{snippet}
+
+To build the two indices, first {\LaTeX}ify the document, then run
+\begin{snippet}{plain}
+makeindex general
+makeindex authors
+\end{snippet}
+Then {\LaTeX}ify the document again. You can see an example of the result at the end of this document. For more information on this process, see \url{https://en.wikibooks.org/wiki/LaTeX/Indexing}
+
+\subsubsection{Quotes}
+
+The environment \code{longquote} is useful for typesetting long quotes. The following \LaTeX~code
+\begin{snippet}{LaTeX}
+\begin{longquote}
+A vulgar Mechanik can practice what he has been taught or seen done, but if he is in an error he knows not how to find it out and correct it, and if you put him out of his road, he is at a stand; whereas he that is able to reason numbly and judiciously about figure, force and motion, is never at rest til he gets over every rub.
+\end{longquote}
+\end{snippet}
+gives rise to
+\begin{longquote}
+A vulgar Mechanik can practice what he has been taught or seen done, but if he is in an error he knows not how to find it out and correct it, and if you put him out of his road, he is at a stand; whereas he that is able to reason numbly and judiciously about figure, force and motion, is never at rest til he gets over every rub.
+\end{longquote}
+
+The environment \code{shortquote} is currently defined as an alias to \code{quote}. The following \LaTeX~code
+\begin{snippet}{LaTeX}
+\begin{shortquote}
+A vulgar Mechanik can practice what he has been taught or seen done, but if he is in an error he knows not how to find it out and correct it, and if you put him out of his road, he is at a stand; whereas he that is able to reason numbly and judiciously about figure, force and motion, is never at rest til he gets over every rub.
+\end{shortquote}
+\end{snippet}
+gives rise to
+\begin{shortquote}
+A vulgar Mechanik can practice what he has been taught or seen done, but if he is in an error he knows not how to find it out and correct it, and if you put him out of his road, he is at a stand; whereas he that is able to reason numbly and judiciously about figure, force and motion, is never at rest til he gets over every rub.
+\end{shortquote}
+
+\subsection{\program{lathalesians-font}: font setup}
+
+This package has no key-value options. It simply configures the fonts. At Thalesians, we prefer to use the Palatino typeface family. According to Wikipedia,
+\begin{longquote}
+Palatino is the name of a large typeface family that began as an old style serif typeface designed by Hermann Zapf initially released in 1948 by the Linotype foundry. In 41999 Zapf revised Palatino for Linotype and Microsoft called Palatino Linotype. The revised family incorporated extended Latin, Greek, Cyrillic character sets.
+
+Under the collaboration of Zapf and Akira Kobayashi the Palatino typeface family was expanded. Linotype released the Palatino nova, Palatino Sans, and Palatino Sans Informal families, expanding the Palatino typeface families to include humanist sans-serif typefaces. Palatino nova was released in 2005, while the others were released in 2006.
+
+Named after 16th century Italian master of calligraphy Giambattista Palatino, Palatino is based on the humanist fonts of the Italian Renaissance, which mirror the letters formed by a broad nib pen; this gives a calligraphic grace. But where the Renaissance faces tend to use smaller letters with longer vertical lines (ascenders and descenders) with lighter strokes, Palatino has larger proportions, and is considered much easier to read.
+
+It remains one of the most widely-used (and copied) text typefaces, has been adapted to virtually every type of technology, and is one of the ten most used serif typefaces. It is one of several typefaces by Zapf, each showing influence of the Italian Renaissance letter forms. The group includes Palatine, Sistina, Michaelangelo tiling, and Aldus, which takes inspiration from printing types cut by Francesco Griffo c. 1495 in the print shop of Aldus Manutius.
+\end{longquote}
+
+This document is an example of what the end result will look like.
+
+\subsection{\program{lathalesians-formatting}: formatting}
+
+This package includes the basic machinery for formatting margins, paragraphs and indentation.
+
+\subsubsection{Usage}
+
+\begin{snippet}{plain}
+\usepackage[<key=value list>]{lathalesians-formatting}
+\end{snippet}
+The following options are allowed in the comma-separated key=value list:
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Option             & Possible values                            & Default value   & Description                                      \\
+\hline
+\code{usegeometry} & \code{true}, \code{false}                  & \code{true}     & use \program{geometry} package to set up margins \\
+\code{geometry}    & as specified by \program{geometry} package & see below       & \program{geometry} arguments                     \\
+\hline
+\caption{Options supported by \program!lathalesians-commons!}
+\end{longtable}
+\end{footnotesize}
+
+If \code{usegeometry=true} (the default case), then the \code{geometry} option will be passed on to the \program{geometry} package. The default value of this option is
+\begin{snippet}{plain}
+left=1in,right=1in,top=1in,bottom=1in
+\end{snippet}
+Here is an example of the script's usage with the arguments supplied explicitly\footnote{We don't actually need to specify \code{usegeometry=true}, as this is the default setting anyway.}:
+\begin{snippet}{LaTeX}
+\usepackage[usegeometry=true,geometry={left=1in,right=1in,top=2in,bottom=2in}]{lathalesians-formatting}
+\end{snippet}
+
+In addition to optionally setting the margins, the package will configure the paragraphs and indentation as follows:
+\begin{snippet}{LaTeX}
+% Medium space before a \par:
+\setlength{\parskip}{\medskipamount}
+% Don't indent first lines of paragraphs:
+\setlength{\parindent}{0pt}
+\end{snippet}
+
+\subsection{\program{lathalesians-theorems}: theorems}
+
+This package sets the naming and numbering conventions for propositions, theorems, corollaries, etc., as used in the Thalesians' works. It is fairly self-explanatory, so we shall illustrate its use with a single example:
+
+\begin{snippet}{LaTeX}
+\begin{hypothesis}
+This is a hypothesis.
+\end{hypothesis}
+
+\begin{proposition}
+This is a proposition.
+\begin{proof}
+And its proof.
+\end{proof}
+\end{proposition}
+
+\begin{proposition}
+This is another proposition.
+\end{proposition}
+
+\begin{corollary}
+This is a corollary.
+\end{corollary}
+
+\begin{theorem}
+This is a theorem.
+\end{theorem}
+
+\begin{lemma}[some named lemma]
+This is a lemma.
+\end{lemma}
+
+\begin{definition}
+This is a \defn{definition}.
+\end{definition}
+
+\begin{remark}
+This is a remark.
+\end{remark}
+
+\begin{example}
+This is an example.
+\end{example}
+\end{snippet}
+
+This gives rise to the following:
+
+\begin{hypothesis}
+This is a hypothesis.
+\end{hypothesis}
+
+\begin{proposition}
+This is a proposition.
+\begin{proof}
+And its proof.
+\end{proof}
+\end{proposition}
+
+\begin{proposition}
+This is another proposition.
+\end{proposition}
+
+\begin{corollary}
+This is a corollary.
+\end{corollary}
+
+\begin{theorem}
+This is a theorem.
+\end{theorem}
+
+\begin{lemma}[some named lemma]
+This is a lemma.
+\end{lemma}
+
+\begin{definition}
+This is a \defn{definition}.
+\end{definition}
+
+\begin{remark}
+This is a remark.
+\end{remark}
+
+\begin{example}
+This is an example.
+\end{example}
+
+\subsection{\program{lathalesians-code}: programming}
+
+This package enables us to include in our documents portions of computer code and programs' output. Many of the commands defined in this package are wrappers around those defined in the package \program{listings}, developed by \anauthor{Carsten~Heinz}[Heinz, Carsten], \anauthor{Brooks~Moses}[Moses, Brooks] and its current maintainer, \anauthor{Jobst~Hoffmann}[Hoffmann, Jobst].
+
+\subsubsection{Inlining code: \code{\\code}}
+
+Use \code{\code} to inline code in your \LaTeX~prose. The syntax is as follows:
+\begin{snippet}{plain}
+\code[<key=value list>]<character><source code><same character>
+\end{snippet}
+While we say here \verb"<same character>", the command also understands bracket pairs. Thus \code|\code{3+5}|, \code|\code!3+5!| and \code{\code|3+5|} will lead to the same result: \code{3+5}.
+
+We can use \code{\code} to include small portions of code in our prose. For example, \code!\code{c := a + b}! will give rise to \code{c := a + b}. We can also use it to refer to variables, methods, and classes. To talk about a variable named \code{foo}, use \code!\code{foo}! or (for example) \code{\code!foo!}, which will give the same result. Similarly, you can use \code!\code{someMethodName}! or \code{\code!someMethodName!} to typeset \code{someMethodName}.
+
+\sloppy \code{\code} is a wrapper around \code{\lstinline} of the package \program{listings}. The comma-separated \code![<key=value list>]! is passed on to \code{\lstinline}. For example, \code!\code{print("sum", 3+5)}! will result in \code{print("sum", 3+5)}, which looks different from the result of \code!\code[language=python]{print("sum", 3+5)}! --- \code[language=python]{print("sum", 3+5)}.
+
+\subsubsection{Referring to programs, files, and directories}
+
+The commands \code{\program} and \code{\file} have a similar syntax to \code{\code}. Use \code{\program} to refer to programs and their modules. For example, \code!\program{lathalesians-code}! will appear as \program{lathalesians-code}. Use \code{\file} to refer to files and directories, for example \code!\file{C:\Program Files\MiKTeX 2.9}! will be rendered as \file{C:\Program Files\MiKTeX 2.9}.
+
+\subsubsection{Code snippets}
+
+When we need to include entire code snippets in our programs, rather than small expressions, as we did with \code{\code}, we use the environment \code{Snippet} or its sibling, \code{snippet}. Both of these commands are \program{listings} environments. The only difference between the two is that \code{Snippet} includes a caption and increments the listings counter. All \code{Snippet}s are numbers, whereas \code{snippet}s are not. The syntax of \code{snippet} is identical to that of \code{Snippet}:
+\begin{snippet}{plain}
+\begin{Snippet}[<key=value list>]{<style>}
+...
+\end{Snippet}
+\end{snippet}
+The \code{<key=value list>} is passed on to \code{lstset}. The \code{<style>} is case-sensitive and is one of: \code{BUGS}, \code{CPP}, \code{Java}, \code{LaTeX}, \code{Python}, \code{q}, \code{plain} and \code{output}. The styles \code{plain} and \code{output} are special: \code{plain} does not highlight any syntax by default, so in some sense we get a fancy verbatim environment; \code{output} is used for typesetting program output.
+
+The following listing was created using the \LaTeX~code
+\begin{snippet}{LaTeX}
+\begin{Snippet}[caption=An example from \protect\url{https://wiki.python.org/moin/SimplePrograms}: 8-Queens Problem (define your own exceptions)]{Python}
+BOARD_SIZE = 8
+
+class BailOut(Exception):
+    pass
+
+...
+\end{Snippet}
+\end{snippet}
+Notice that we used the \code{Snippet} environment, beginning with the uppercase letter, we ensure that a full numbered listing is created:
+\begin{Snippet}[caption=An example from \protect\url{https://wiki.python.org/moin/SimplePrograms}: 8-Queens Problem (define your own exceptions)]{Python}
+BOARD_SIZE = 8
+
+class BailOut(Exception):
+    pass
+
+def validate(queens):
+    left = right = col = queens[-1]
+    for r in reversed(queens[:-1]):
+        left, right = left-1, right+1
+        if r in (left, col, right):
+            raise BailOut
+
+def add_queen(queens):
+    for i in range(BOARD_SIZE):
+        test_queens = queens + [i]
+        try:
+            validate(test_queens)
+            if len(test_queens) == BOARD_SIZE:
+                return test_queens
+            else:
+                return add_queen(test_queens)
+        except BailOut:
+            pass
+    raise BailOut
+
+queens = add_queen([])
+print queens
+print "\n".join(". "*q + "Q " + ". "*(BOARD_SIZE-q-1) for q in queens)
+\end{Snippet}
+
+If instead we used the \code{snippet} environment, beginning with the lowercase letter, there would be a border but no caption, and the listing count would not be incremented. Of course, in this case it would be pointless to provide additional \code{caption} parameter to the \program{listings} package, so instead we would use
+\begin{snippetx}{LaTeX}
+\begin{snippet}{Python}
+BOARD_SIZE = 8
+
+class BailOut(Exception):
+    pass
+
+...
+\end{snippet}
+\end{snippetx}
+to produce
+\begin{snippet}{Python}
+BOARD_SIZE = 8
+
+class BailOut(Exception):
+    pass
+...
+\end{snippet}
+
+If instead of including the Python source code in our \LaTeX~source we prefer to load it from a file, we can use \code{Source} or its sibling, \code{source} to obtain the same effect as, respectively, \code{Snippet} and \code{snippet} above. Thus
+\begin{snippet}{LaTeX}
+\source[caption=Another example from \protect\url{https://wiki.python.org/moin/SimplePrograms}: Prime numbers sieve with fancy generators]{Python}{examples/eg.py}
+\end{snippet}
+will give us:
+\source[caption=Another example from \protect\url{https://wiki.python.org/moin/SimplePrograms}: Prime numbers sieve with fancy generators]{Python}{examples/eg.py}
+
+To include the output of the above program, we can use
+\begin{snippet}{LaTeX}
+\Source[caption=Some output]{output}{examples/output.txt}
+\end{snippet}
+produces
+\Source[caption=Some output]{output}{examples/output.txt}
+
+\subsection{\program{lathalesians-analysis}: analysis}
+
+This package introduces some commands and environments to simplify the typesetting of works in basic mathematical analysis. Of course, much of mathematics relies on analysis, so this package is useful in many different kinds of mathematical work. We regard set theory as an integral part of mathematical analysis, so much of the package deals with sets.
+
+\subsubsection{Summary of commands and environments}
+
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Command               & Example: code                                              & Example: {\LaTeX}ed                                & Description                         \\
+\hline
+\code{\defeq}         & \code!$A \defeq \set{1,2,3}$!                              & $A \defeq \set{1,2,3}$                             & is equal by def. to (left to right) \\
+\code{\eqdef}         & \code!$\set{1,2,3} \eqdef A$!                              & $\set{1,2,3} \eqdef A$                             & is equal by def. to (right to left) \\
+\code{\idwith}        & \code!$a_i \idwith b_i$!                                   & $a_i \idwith b_i$                                  & is identified with                  \\
+\code{\tendsto}       & \code!$x \tendsto \infty$!                                 & $x \tendsto \infty$                                & tends to                            \\
+\code{\Implies}       & \code!$A \Implies B$!                                      & $A \Implies B$                                     & implies, only if                    \\
+\code{\OnlyIf}        & \code!$A \OnlyIf B$!                                       & $A \OnlyIf B$                                      & ditto                               \\
+\code{\ImpliedBy}     & \code!$A \ImpliedBy B$!                                    & $A \ImpliedBy B$                                   & implied by, if                      \\
+\code{\If}            & \code!$A \If B$!                                           & $A \If B$                                          & ditto                               \\
+\code{\Iff}           & \code!$A \Iff B$!                                          & $A \Iff B$                                         & if and only if                      \\
+\code{\N}             & \code!$\N$!                                                & $\N$                                               & natural numbers                     \\
+\code{\Nz}            & \code!$\Nz$!                                               & $\Nz$                                              & ditto, explicitly incl. 0           \\
+\code{\Nnz}           & \code!$\Nnz$!                                              & $\Nnz$                                             & nonzero natural numbers             \\
+\code{\Z}             & \code!$\Z$!                                                & $\Z$                                               & integers                            \\
+\code{\Zp}            & \code!$\Zp$!                                               & $\Zp$                                              & positive integers                   \\
+\code{\Znn}           & \code!$\Znn$!                                              & $\Znn$                                             & nonnegative integers                \\
+\code{\Zn}            & \code!$\Zn$!                                               & $\Zn$                                              & negative integers                   \\
+\code{\Znz}           & \code!$\Znz$!                                              & $\Znz$                                             & nonzero integers                    \\
+\code{\Q}             & \code!$\Q$!                                                & $\Q$                                               & rationals                           \\
+\code{\Qp}            & \code!$\Qp$!                                               & $\Qp$                                              & positive rationals                  \\
+\code{\Qnn}           & \code!$\Qnn$!                                              & $\Qnn$                                             & nonnegative rationals               \\
+\code{\Qn}            & \code!$\Qn$!                                               & $\Qn$                                              & negative rationals                  \\
+\code{\Qnz}           & \code!$\Qnz$!                                              & $\Qnz$                                             & nonzero rationals                   \\
+\code{\R}             & \code!$\R$!                                                & $\R$                                               & reals                               \\
+\code{\Rp}            & \code!$\Rp$!                                               & $\Rp$                                              & positive reals                      \\
+\code{\Rnn}           & \code!$\Rnn$!                                              & $\Rnn$                                             & nonnegative reals                   \\
+\code{\Rn}            & \code!$\Rn$!                                               & $\Rn$                                              & negative reals                      \\
+\code{\Rnz}           & \code!$\Rnz$!                                              & $\Rnz$                                             & nonzero reals                       \\
+\code{\C}             & \code!$\C$!                                                & $\C$                                               & complex numbers                     \\
+\code{\Cnz}           & \code!$\Cnz$!                                              & $\Cnz$                                             & nonzero complex numbers             \\
+\code{\Collection}    & \code!$\Collection{F}$!                                    & $\Collection{F}$                                   & name of a collection                \\
+\code{\Set}           & \code!$\Set{A}$!                                           & $\Set{A}$                                          & name of a set                       \\
+\code{\collection}    & \code!$\collection{A,B,\ldots}$!                           & $\collection{A,B,\ldots}$                          & definition of a collection          \\
+                      & \code!$\collection{O\in\Collection{T}}[O\text{ clopen}]$!  & $\collection{O\in\Collection{T}}[O\text{ clopen}]$ &                                     \\
+\code{\set}           & \code!$\set{1,2,3}$!                                       & $\set{1,2,3}$                                      & definition of a set                 \\
+                      & \code!$\set{x\in\N}[x\text{ even}]$!                       & $\set{x\in\N}[x\text{ even}]$                      &                                     \\
+\code{\seqel}         & \code!$\seqel{a_k}$!                                       & $\seqel{a_k}$                                      & name of element of a sequence       \\
+                      & \code!$\seqel{a_k}[k\in\N]$!                               & $\seqel{a_k}[k\in\N]$                              &                                     \\
+                      & \code!$\seqel{a_k}[k=1][\infty]$!                          & $\seqel{a_k}[k=1][\infty]$                         &                                     \\
+\code{\sequence}      & \code!$\sequence{2, 4, 6, \ldots}$!                        & $\sequence{2, 4, 6, \ldots}$                       & definition of a sequence            \\
+\code{\tuple}         & \code!$\tuple{2, 4, 6}$!                                   & $\tuple{2, 4, 6}$                                  & definition of a tuple               \\
+\code{\st}            & \code!$x\in\N \st x\text{ even}$!                          & $x\in\N \st x\text{ even}$                         & such that                           \\
+\code{\sset}          & \code!$\Z \sset \R$!                                       & $\Z \sset \R$                                      & subset                              \\
+\code{\Sset}          & \code!$\R \Sset \Z$!                                       & $\R \Sset \Z$                                      & superset                            \\
+\code{\psset}         & \code!$\Z \psset \R$!                                      & $\Z \psset \R$                                     & proper subset                       \\
+\code{\pSset}         & \code!$\R \pSset \Z$!                                      & $\R \pSset \Z$                                     & proper superset                     \\
+\code{\setdiff}       & \code!$A \setdiff B$!                                      & $A \setdiff B$                                     & set difference                      \\
+\code{\symmdiff}      & \code!$A \symmdiff B$!                                     & $A \symmdiff B$                                    & symmetric difference                \\
+\code{\setcomplement} & \code!$\setcomplement{A}$!                                 & $\setcomplement{A}$                                & set complement                      \\
+\code{\closure}       & \code!$\closure{A}$!                                       & $\closure{A}$                                      & closure                             \\
+\code{\interior}      & \code!$\interior{A}$!                                      & $\interior{A}$                                     & interior                            \\
+\code{\embed}         & \code!$X \embed Y$!                                        & $X \embed Y$                                       & topological embedding               \\
+\code{\embedsinto}    & \code!$X \embedsinto Y$!                                   & $X \embedsinto Y$                                  & ditto                               \\
+\code{\functype}      & \code!$\functype{\C}{\Rnn}$!                               & $\functype{\C}{\Rnn}$                              & function type                       \\
+                      & \code!$\functype[f]{\C}{\Rnn}$!                            & $\functype[f]{\C}{\Rnn}$                           &                                     \\
+\code{\funcdefn}      & \code!$\funcdefn{x}{x^2}$!                                 & $\funcdefn{x}{x^2}$                                & function definition                 \\
+                      & \code!$\funcdefn[f]{x}{x^2}$!                              & $$\funcdefn[f]{x}{x^2}$$                           &                                     \\
+\code{\indfunc}       & \code!$\indfunc{A}(x)$!                                    & $\indfunc{A}(x)$                                   & indicator function of a set         \\
+\code{\zerofunc}      & \code!$\zerofunc(x)$!                                      & $\zerofunc(x)$                                     & zero function                       \\
+\code{\argmin}        & \code!$\argmin_{x\in A} f(x)$!                             & $\argmin_{x\in A} f(x)$                            & arguments of the minima             \\
+\code{\argmax}        & \code!$\argmax_{x\in A} f(x)$!                             & $\argmax_{x\in A} f(x)$                            & arguments of the maxima             \\
+\code{\norm}          & \code!$\norm{x}_2$!                                        & $\norm{x}_2$                                       & norm                                \\
+\hline
+\caption{Summary of commands and environments defined in \code!lathalesians-analysis!}
+\end{longtable}
+\end{footnotesize}
+
+\subsection{\program{lathalesians-linear}: linear algebra}
+
+\subsubsection{Summary of commands and environments}
+
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Command            & Example: code          & Example: {\LaTeX}ed & Description      \\
+\hline
+\code{\transpose}  & \code!$\transpose{v}$! & $\transpose{v}$     & transpose        \\
+\code{\tr}         & \code!$\tr{A}$!        & $\tr{A}$            & trace            \\
+\code{\rank}       & \code!$\rank{A}$!      & $\rank{A}$          & rank             \\
+\code{\nul}        & \code!$\nul{A}$!       & $\nul{A}$           & nullity          \\
+\code{\V}          & \code!$\V{v}$!         & $\V{v}$             & name of a vector \\
+\code{\M}          & \code!$\M{A}$!         & $\M{A}$             & name of a matrix \\
+\hline
+\caption{Summary of commands and environments defined in \code!lathalesians-linear!}
+\end{longtable}
+\end{footnotesize}
+
+To typeset matrix and vector definitions, we prefer to use the \code{pmatrix} environment from \program{amsmath}\footnote{For more information on typesetting matrices see \url{http://tex.stackexchange.com/questions/26434/where-is-the-matrix-command}}:
+\begin{snippet}{LaTeX}
+\begin{gather*}
+\V{u} \defeq \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}, \\
+\V{v} \defeq \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \\
+\V{v} = \transpose{\begin{pmatrix} 1 & 2 & 3 \end{pmatrix}}, \\
+\M{M} \defeq \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}.
+\end{gather*}
+\end{snippet}
+This gives rise to:
+\begin{gather*}
+\V{u} \defeq \begin{pmatrix} 1 & 2 & 3 \end{pmatrix}, \\
+\V{v} \defeq \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}, \\
+\V{v} = \transpose{\begin{pmatrix} 1 & 2 & 3 \end{pmatrix}}, \\
+\M{M} \defeq \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{pmatrix}.
+\end{gather*}
+
+\subsection{\program{lathalesians-probability}: probability theory and statistics}
+
+This package defines some commands and environments to simplify the typesetting of works in probability and statistics.
+
+By extension, this package is useful for works in stochastic analysis, stochastic filtering and control, econometrics, and mathematical finance.
+
+\subsubsection{Summary of commands and environments}
+
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Command              & Example: code                                  & Example: {\LaTeX}ed                     & Description               \\
+\hline
+\code{\SampleSpace}  & \code!$\SampleSpace$!                          & $\SampleSpace$                          & sample space              \\
+\code{\Measures}     & \code!$\Measures[X]$!                          & $\Measures[X]$                          & measure space             \\
+                     & \code!$\Measures$!                             & $\Measures$                             &                           \\
+\code{\ProbMeasures} & \code!$\ProbMeasures[X]$!                      & $\ProbMeasures[X]$                      & probability measure space \\
+                     & \code!$\ProbMeasures$!                         & $\ProbMeasures$                         &                           \\
+\code{\Borel}        & \code!$\Borel[\R]$!                            & $\Borel[\R]$                            & Borel $\sigma$-algebra    \\
+                     & \code!$\Borel$!                                & $\Borel$                                &                           \\
+\code{\Time}         & \code!$\Time$!                                 & $\Time$                                 & time of a process         \\
+\code{\State}        & \code!$\State$!                                & $\State$                                & state of a process        \\
+\code{\aew}          & \code!\aew!                                    & \aew                                    & almost everywhere         \\
+\code{\as}           & \code!\as!                                     & \as                                     & almost surely             \\
+\code{\convlaw}      & \code!$\convlaw$!                              & $\convlaw$                              & converges in law          \\
+\code{\convprob}     & \code!$\convprob$!                             & $\convprob$                             & converges in probability  \\
+\code{\convas}       & \code!$\convas$!                               & $\convas$                               & converges almost surely   \\
+\code{\convweak}     & \code!$\convweak$!                             & $\convweak$                             & converges weakly          \\
+\code{\support}      & \code!$\support \mu$!                          & $\support \mu$                          & support of a measure      \\
+\code{\Prob}         & \code!$\Prob$!                                 & $\Prob$                                 & probability               \\
+                     & \code!$\Prob[A]$!                              & $\Prob[A]$                              &                           \\
+\code{\ProbMeasure}  & \code!$\ProbMeasure{Q}$!                       & $\ProbMeasure{Q}$                       & probability measure       \\
+                     & \code!$\ProbMeasure{Q}[A]$!                    & $\ProbMeasure{Q}[A]$                    &                           \\
+\code{\given}        & \code!$\Prob[A \given B]$!                     & $\Prob[A \given B]$                     & given (conditioned on)    \\
+\code{\E}            & \code!$\E[X]$!                                 & $\E[X]$                                 & expectation operator      \\
+                     & \code!$\E[X][\ProbMeasure{Q}]$!                & $\E[X][\ProbMeasure{Q}]$                &                           \\
+                     & \code!$\E$!                                    & $\E$                                    &                           \\
+\code{\Var}          & \code!$\Var[X]$!                               & $\Var[X]$                               & variance                  \\
+                     & \code!$\Var[X][\ProbMeasure{Q}]$!              & $\Var[X][\ProbMeasure{Q}]$              &                           \\
+                     & \code!$\Var$!                                  & $\Var$                                  &                           \\
+\code{\Cov}          & \code!$\Cov[X,Y]$!                             & $\Cov[X,Y]$                             & covariance                \\
+                     & \code!$\Cov[X,Y][\ProbMeasure{Q}]$!            & $\Cov[X,Y][\ProbMeasure{Q}]$            &                           \\
+                     & \code!$\Cov$!                                  & $\Cov$                                  &                           \\
+\code{\Cor}          & \code!$\Cor[X,Y]$!                             & $\Cor[X,Y]$                             & correlation               \\
+                     & \code!$\Cor[X,Y][\ProbMeasure{Q}]$!            & $\Cor[X,Y][\ProbMeasure{Q}]$            &                           \\
+                     & \code!$\Cor$!                                  & $\Cor$                                  &                           \\
+\code{\Normal}       & \code!$\Normal{\mu}{\sigma^2}$!                & $\Normal{\mu}{\sigma^2}$                & normal distribution       \\
+\code{\WS}           & \code!$\WS{\mu}{\sigma^2}$!                    & $\WS{\mu}{\sigma^2}$                    & wide sense distribution   \\
+\code{\distributed}  & \code!$X \distributed \Normal{\mu}{\sigma^2}$! & $X \distributed \Normal{\mu}{\sigma^2}$ & distributed as            \\
+\code{\normalpdf}    & \code!$\normalpdf{\mu}{\sigma^2}$!             & $\normalpdf{\mu}{\sigma^2}$             & normal p.d.f              \\
+                     & \code!$\normalpdf[x]{\mu}{\sigma^2}$!          & $\normalpdf[x]{\mu}{\sigma^2}$          &                           \\
+\hline
+\caption{Summary of commands and environments defined in \code!lathalesians-probability!}
+\end{longtable}
+\end{footnotesize}
+
+\subsection{\program{lathalesians-categories}: category theory}
+
+This package defines symbols for some common category names. The naming and typesetting conventions are those defined in \cite{gierz-2003}. The descriptions of the categories can be found in the appendix of \cite{gierz-2003}.
+
+\subsubsection{Summary of commands and environments}
+
+\begin{footnotesize}
+\begin{longtable}{ll}
+\hline
+Code                  & {\LaTeX}ed result   \\
+\hline
+\code{$\CatAL$}       & $\CatAL$            \\
+\code{$\CatALop$}     & $\CatALop$          \\
+\code{$\CatALG$}      & $\CatALG$           \\
+\code{$\CatALGDOM$}   & $\CatALGDOM$        \\
+\code{$\CatALGDOMD$}  & $\CatALGDOMD$       \\
+\code{$\CatALGDOMG$}  & $\CatALGDOMG$       \\
+\code{$\CatArL$}      & $\CatArL$           \\
+\code{$\CatArLop$}    & $\CatArLop$         \\
+\code{$\CatBCSOB$}    & $\CatBCSOB$         \\
+\code{$\CatBF$}       & $\CatBF$            \\
+\code{$\CatCCSOB$}    & $\CatCCSOB$         \\
+\code{$\CatCL$}       & $\CatCL$            \\
+\code{$\CatCLd$}      & $\CatCLd$           \\
+\code{$\CatCLm$}      & $\CatCLm$           \\
+\code{$\CatCLop$}     & $\CatCLop$          \\
+\code{$\CatCONT$}     & $\CatCONT$          \\
+\code{$\CatCPOSP$}    & $\CatCPOSP$         \\
+\code{$\CatCS$}       & $\CatCS$            \\
+\code{$\CatCSEM$}     & $\CatCSEM$          \\
+\code{$\CatDAR$}      & $\CatDAR$           \\
+\code{$\CatDCPO$}     & $\CatDCPO$          \\
+\code{$\CatDCPOp$}    & $\CatDCPOp$         \\
+\code{$\CatDCPOps$}   & $\CatDCPOps$        \\
+\code{$\CatDCPOD$}    & $\CatDCPOD$         \\
+\code{$\CatDCPOG$}    & $\CatDCPOG$         \\
+\code{$\CatDCPOFILT$} & $\CatDCPOFILT$      \\
+\code{$\CatDL$}       & $\CatDL$            \\
+\code{$\CatDLat$}     & $\CatDLat$          \\
+\code{$\CatDOM$}      & $\CatDOM$           \\
+\code{$\CatDOMD$}     & $\CatDOMD$          \\
+\code{$\CatDOMG$}     & $\CatDOMG$          \\
+\code{$\CatDOMFILT$}  & $\CatDOMFILT$       \\
+\code{$\CatFRM$}      & $\CatFRM$           \\
+\code{$\CatFRMz$}     & $\CatFRMz$          \\
+\code{$\CatFS$}       & $\CatFS$            \\
+\code{$\CatGRAPH$}    & $\CatGRAPH$         \\
+\code{$\CatH$}        & $\CatH$             \\
+\code{$\CatINF$}      & $\CatINF$           \\
+\code{$\CatINFup$}    & $\CatINFup$         \\
+\code{$\CatLAT$}      & $\CatLAT$           \\
+\code{$\CatLCSOB$}    & $\CatLCSOB$         \\
+\code{$\CatLDOM$}     & $\CatLDOM$          \\
+\code{$\CatPOID$}     & $\CatPOID$          \\
+\code{$\CatPOSET$}    & $\CatPOSET$         \\
+\code{$\CatPOSETD$}   & $\CatPOSETD$        \\
+\code{$\CatPOSETG$}   & $\CatPOSETG$        \\
+\code{$\CatSCFRM$}    & $\CatSCFRM$         \\
+\code{$\CatSCFRMi$}   & $\CatSCFRMi$        \\
+\code{$\CatSCTOP$}    & $\CatSCTOP$         \\
+\code{$\CatSEM$}      & $\CatSEM$           \\
+\code{$\CatSEMI$}     & $\CatSEMI$          \\
+\code{$\CatSET$}      & $\CatSET$           \\
+\code{$\CatSLCTOP$}   & $\CatSLCTOP$        \\
+\code{$\CatSOB$}      & $\CatSOB$           \\
+\code{$\CatSUP$}      & $\CatSUP$           \\
+\code{$\CatSUPu$}     & $\CatSUPu$          \\
+\code{$\CatSUPz$}     & $\CatSUPz$          \\
+\code{$\CatTCPOSP$}   & $\CatTCPOSP$        \\
+\code{$\CatTOP$}      & $\CatTOP$           \\
+\code{$\CatUPS$}      & $\CatUPS$           \\
+\hline
+\caption{Categories supported by \program!lathalesians-categories!}
+\end{longtable}
+\end{footnotesize}
+
+\subsection{\program{lathalesians-domains}: domain theory}
+
+This package introduces some commands for writing papers on the branch of mathematics called \defn{domain theory}, which studies special kinds of partially ordered sets (posets) \cite{gierz-2003}.
+
+\subsubsection{Usage}
+
+\begin{snippet}{plain}
+\usepackage[<key=value list>]{lathalesians-domains}
+\end{snippet}
+The following options are allowed in the comma-separated key=value list:
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Option             & Possible values    & Default value & Description                                                       \\
+\hline
+\code{ssfnotation} & \code{a}, \code{b} & \code{b}      & whether \code{\ssf} is equivalent to \code{\ssfa} or \code{\ssfb} \\
+\hline
+\caption{Options supported by \program!lathalesians-domains!}
+\end{longtable}
+\end{footnotesize}
+Example:
+\begin{snippet}{LaTeX}
+\usepackage[ssfnotation=a]{lathalesians-domains}
+\end{snippet}
+
+\subsubsection{Summary of commands and environments}
+
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Command                         & Example: code                               & Example: {\LaTeX}ed                  & Description                             \\
+\hline
+\code{\lteq}, \code{\lesseq}    & \code!$a \lteq b$!                          & $a \lteq b$                          & ``Less than or equal to'' for posets    \\
+\code{\lt}, \code{\less}        & \code!$a \lt b$!                            & $a \lt b$                            & ``Less than'' for posets                \\
+\code{\eq}                      & \code!$a \eq b$!                            & $a \eq b$                            & ``Equal'' for posets, same as $=$       \\
+\code{\gt}, \code{\greater}     & \code!$a \gt b$!                            & $a \lt b$                            & ``Greater than'' for posets             \\
+\code{\gteq}, \code{\greatereq} & \code!$a \gteq b$!                          & $a \gteq b$                          & ``Greater than or equal to'' for posets \\
+\code{\wb}, \code{\waybelow}    & \code!$a \wb b$!                            & $a \wb b$                            & ``Way-below'' for dcpo's                \\
+\code{\wa}, \code{\wayabove}    & \code!$a \wa b$!                            & $a \wa b$                            & ``Way-above'' for dcpo's                \\
+\code{\join}                    & \code!$a \join b$!                          & $a \join b$                          & Join of two elements                    \\
+\code{\meet}                    & \code!$a \meet b$!                          & $a \meet b$                          & Meet of two elements                    \\
+\code{\setjoin}                 & \code!$\setjoin A$!                         & $\setjoin A$                         & Join (supremum) of a set                \\
+\code{\setmeet}                 & \code!$\setmeet A$!                         & $\setmeet A$                         & Meet (infimum) of a set                 \\
+\code{\dsetjoin}                & \code!$\dsetjoin A$!                        & $\dsetjoin A$                        & Directed supremum                       \\
+\code{\fsetmeet}                & \code!$\fsetmeet A$!                        & $\fsetmeet A$                        & Filtered infimum                        \\
+\code{\belowset}                & \code!$\belowset{A}$!                       & $\belowset{A}$                       & Downward closure w.r.t. below           \\
+\code{\aboveset}                & \code!$\aboveset{A}$!                       & $\aboveset{A}$                       & Upward closure w.r.t. below             \\
+\code{\waybelowset}             & \code!$\waybelowset{A}$!                    & $\waybelowset{A}$                    & Downward closure w.r.t. way-below       \\
+\code{\wayaboveset}             & \code!$\wayaboveset{A}$!                    & $\wayaboveset{A}$                    & Upward closure w.r.t. way-below         \\
+\code{\ssfa}                    & \code!$\ssfa{U}{s}$!                        & $\ssfa{U}{s}$                        & Single-step function (notation a)       \\
+\code{\ssfb}                    & \code!$\ssfb{U}{s}$!                        & $\ssfb{U}{s}$                        & Single-step function (notation b)       \\
+\code{\ssf}                     & \code!$\ssf{U}{s}$!                         & $\ssf{U}{s}$                         & Notation a or b (default)               \\
+\code{\topfuncspace}            & \code!$\topfuncspace{X}{Y}$!                & $\topfuncspace{X}{Y}$                & Topological function space              \\
+\code{\domfuncspace}            & \code!$\domfuncspace{X}{Y}$!                & $\domfuncspace{X}{Y}$                & Domain-theoretic function space         \\
+\code{\Intervals}               & \code!$\Intervals{[0,1]}$!                  & $\Intervals{[0,1]}$                  & Interval domain                         \\
+\code{\UpperSpace}              & \code!$\UpperSpace{X}$!                     & $\UpperSpace{X}$                     & Upper space                             \\
+\code{\PPD}                     & \code!$\PPD{\Intervals{[0,1]}}$!            & $\PPD{\Intervals{[0,1]}}$            & Probabilistic power domain (p.p.d.)     \\
+\code{\NPPD}                    & \code!$\NPPD{\Intervals{[0,1]}}$!           & $\NPPD{\Intervals{[0,1]}}$           & Normalised p.p.d.                       \\
+\code{\Maximals}                & \code!$\Maximals{\Intervals{[0,1]}}$!       & $\Maximals{\Intervals{[0,1]}}$       & Maximal elements                        \\
+\code{\Minimals}                & \code!$\Minimals{\Intervals{[0,1]}}$!       & $\Minimals{\Intervals{[0,1]}}$       & Minimal elements                        \\
+\code{\Con}                     & \code!$\Con_{(A,\lteq)}(a_1, \ldots, a_n)$! & $\Con_{(A,\lteq)}(a_1, \ldots, a_n)$ & Consistency predicate                   \\
+\hline
+\caption{Summary of commands and environments defined in \code!lathalesians-domains!}
+\end{longtable}
+\end{footnotesize}
+
+Notice that the \LaTeX~kernel already defines \code{\leq} and \code{\geq} as aliases for the plain \TeX~symbols \code{\le} and \code{\ge}, which are rendered as $\leq$ and $\geq$, respectively. These are the equivalents of $\lteq$ and $\gteq$, respectively, for the natural ordering found in frequently used posets such as the natural numbers.
+
+In domain theory one may be dealing with multiple posets in the same document. Say you are dealing with posets $A$ and $B$. You may wish to distinguish between the binary relations for the two posets. One fairly standard way is to use subscripts: \code{$a \lteq_A b$} and \code{$a \lteq_B b$} are rendered as $a \lteq_A b$ and $a \lteq_B b$, respectively.
+
+By default, \code{\ssf} is equivalent to \code{\ssfb}. However, one can change make it equivalent to \code{\ssfa} using the \code{ssfnotation} key-value option:
+\begin{snippet}{LaTeX}
+\usepackage[ssfnotation=a]{lathalesians-domains}
+\end{snippet}
+
+\subsection{\program{lathalesians-computability}: computability theory}
+
+This small package, still very much under construction, defines some commands and environments to simplify the typesetting of works in computability theory.
+
+\subsubsection{Summary of commands and environments}
+
+\begin{footnotesize}
+\begin{longtable}{llll}
+\hline
+Command                           & Example: code                                           & Example: {\LaTeX}ed                              & Description                 \\
+\hline
+\code{\ComputableFunctions}       & \code!$\ComputableFunctions$!                           & $\ComputableFunctions$                           & computable functions        \\
+\code{\PartialRecursiveFunctions} & \code!$\PartialRecursiveFunctions$!                     & $\PartialRecursiveFunctions$                     & partial recursive functions \\
+\code{\partfunc}                  & \code!$\delta \partfunc \Sigma^{\omega} \rightarrow M$! & $\delta \partfunc \Sigma^{\omega} \rightarrow M$ & partial function            \\
+\code{\partfunc}                  & \code!$\partfuncdefn[\delta]{\Sigma^{\omega}}{M}$!      & $\partfuncdefn[\delta]{\Sigma^{\omega}}{M}$      &                             \\
+\code{\halts}                     & \code!$\halts{P(a_1, a_2, \ldots)}$!                    & $\halts{P(a_1, a_2, \ldots)}$                    & eventually stops            \\
+\code{\nothalts}                  & \code!$\nothalts{P(a_1, a_2, \ldots)}$!                 & $\nothalts{P(a_1, a_2, \ldots)}$                 & never stops                 \\
+\hline
+\caption{Summary of commands and environments defined in \code!lathalesians-computability!}
+\end{longtable}
+\end{footnotesize}
+
+\section{Bibliography: \program{lathalesians-bibliography}}
+
+The file \file{lathalesians-bibliography.bib} contains the BibTeX bibliography of some of the works that we quote in our research. It is not exhaustive, and we shall be much obliged if you help us expand it.
+
+The convention that we use for the BibTeX keys is as follows:
+\begin{snippet}{LaTeX}
+<authorsurname>-<year>
+\end{snippet}
+or
+\begin{snippet}{LaTeX}
+<authorsurname>-<year>-<number>
+\end{snippet}
+The \code{<authorsurname>} is the surname of the first author in lower case and without any spaces, dashes, \etc, \eg: \code{edalat}, \code{vanmill}. The \code{year} is in the \code{yyyy} format, \eg 2016. The number is included only when there is a clash, thus we have \code{edalat-1998}, \code{edalat-1998-1}, and \code{edalat-1998-2}.
+
+Here is how you can include the bibliography in your document:
+\begin{snippet}{LaTeX}
+\bibliographystyle{alpha}
+\bibliography{lathalesians-bibliography}
+\end{snippet}
+
+Then you can \code!\cite{edalat-1998}!, for example, and the result will look like \cite{edalat-1998}.
+
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{alpha}
+\bibliography{lathalesians-bibliography}
+
+\printindex{general}{Subject index}
+\printindex{authors}{Index of authors}
+
+\end{document}

@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{lathalesians-computability}[2016/09/24 LaThalesians Computability]
+
+\RequirePackage{lathalesians-analysis}
+
+\newcommand{\ComputableFunctions}{\Collection{C}}
+\newcommand{\PartialRecursiveFunctions}{\Collection{R}}
+
+\newcommand{\partfunc}{:\subseteq}
+
+\DeclareDocumentCommand \partfuncdefn { o m m }{%
+    \ensuremath{%
+        \IfNoValueTF {#1}%
+            {#2 \mapsto #3}%
+            {#1 \partfunc #2 \mapsto #3}%
+    }%
+}
+
+\DeclareDocumentCommand \halts { m o }{%
+    \ensuremath{%
+        \IfNoValueTF {#2}%
+        {%
+            {#1 \downarrow}
+        }%
+        {%
+            {#1 \downarrow #2}
+        }%
+    }%
+}
+
+\newcommand{\nothalts}[1]{\ensuremath{{#1 \uparrow}}}
