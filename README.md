@@ -1,4 +1,4 @@
-# lathalesians
+# LaThalesians
 
 The LaThalesians library comprises a heterogeneous collection of LaTeX packages,
 which facilitate the type-setting of the Thalesians’ work in mathematics,

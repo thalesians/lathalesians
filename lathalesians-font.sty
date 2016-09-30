@@ -1,8 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{lathalesians-font}[2016/09/24 LaThalesians Font]
 
-% txfonts must be required before mathpazo:
-\RequirePackage{txfonts}
+% txfonts must be required before mathpazo, and amsthm, should one decide to
+% use it, must be required before txfonts. Therefore we shall require it here,
+% just in case, to spare our users the confusion.
+\RequirePackage{amsmath,amsthm,txfonts}
 
 % txfonts introduces some domain theory symbols. We require this package here
 % so that it doesn't matter whether this package is loaded before or after
