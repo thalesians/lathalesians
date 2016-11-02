@@ -27,8 +27,8 @@
 \usepackage{lathalesians-domains}
 \usepackage{lathalesians-computability}
 
-
 \usepackage{longtable}
+\usepackage{nomencl}
 \usepackage{url}
 
 \title{\LaThalesians: The Thalesians' \LaTeX~library}
@@ -39,9 +39,17 @@ Copyright \copyright~2016, Paul~Alexander~Bilokon\footnote{Current maintainer, c
 \makeindex{general}
 \makeindex{authors}
 
+\makenomenclature
+
 \begin{document}
 
 \maketitle
+
+\addcontentsline{toc}{section}{Nomenclature}
+\input{lathalesians-nomenclature-analysis}
+\input{lathalesians-nomenclature-probability}
+
+\printnomenclature
 
 \tableofcontents
 
