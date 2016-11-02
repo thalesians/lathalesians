@@ -45,12 +45,6 @@ Copyright \copyright~2016, Paul~Alexander~Bilokon\footnote{Current maintainer, c
 
 \maketitle
 
-\addcontentsline{toc}{section}{Nomenclature}
-\input{lathalesians-nomenclature-analysis}
-\input{lathalesians-nomenclature-probability}
-
-\printnomenclature
-
 \tableofcontents
 
 \section{Overview}
@@ -119,10 +113,10 @@ The following options are allowed in the comma-separated key=value list:
 \hline
 Option                & Possible values           & Default value   & Description                     \\
 \hline
-\code{usecolour}      & \code{true}, \code{false} & \code{true}     & use colour, \eg in definitions \\
-\code{defncolour}     & \code!{r,g,b}!            & \code!{.5,0,0}! & colour for terms being defined  \\
-\code{anauthorcolour} & \code!{r,g,b}!            & \code!{0,0,.5}! & colour for author names         \\
-\code{nbcolour}       & \code!{r,g,b}!            & \code!{1,0,0}!  & colour for emphasised text      \\
+\code!usecolour!      & \code!true!, \code!false! & \code!true!     & use colour, \eg in definitions \\
+\code!defncolour!     & \code!{r,g,b}!            & \code!{.5,0,0}! & colour for terms being defined  \\
+\code!anauthorcolour! & \code!{r,g,b}!            & \code!{0,0,.5}! & colour for author names         \\
+\code!nbcolour!       & \code!{r,g,b}!            & \code!{1,0,0}!  & colour for emphasised text      \\
 \hline
 \caption{Options supported by \program!lathalesians-commons!}
 \end{longtable}
@@ -139,29 +133,29 @@ Example:
 \hline
 Command                   & Example: code                           & Example: {\LaTeX}ed              & Description                  \\
 \hline
-\code{\LaThalesians}      & \code{\LaThalesians}                    & \LaThalesians                    & the name of this library     \\
-\code{\ol}                & \code!\ol{Thales}!, \code!$\ol{123}$!   & \ol{Thales}, $\ol{123}$          & overline                     \\
-\code{\ul}                & \code!\ul{Thales}!, \code!$\ul{123}$!   & \ul{Thales}, $\ul{123}$          & underline                    \\
-\code{\defn}              & \code!\defn{$G_{\delta}$ set}!          & \defn{$G_{\delta}$ set}          & definition                   \\
+\code!\LaThalesians!      & \code!\LaThalesians!                    & \LaThalesians                    & the name of this library     \\
+\code!\ol!                & \code!\ol{Thales}!, \code!$\ol{123}$!   & \ol{Thales}, $\ol{123}$          & overline                     \\
+\code!\ul!                & \code!\ul{Thales}!, \code!$\ul{123}$!   & \ul{Thales}, $\ul{123}$          & underline                    \\
+\code!\defn!              & \code!\defn{$G_{\delta}$ set}!          & \defn{$G_{\delta}$ set}          & definition                   \\
                           &                                         &                                  & (see details below)          \\
-\code{\anauthor}          & \code!\anauthor{Georg~Cantor}!          & \anauthor{Georg~Cantor}[]        & reference to an author       \\
+\code!\anauthor!          & \code!\anauthor{Georg~Cantor}!          & \anauthor{Georg~Cantor}[]        & reference to an author       \\
                           &                                         &                                  & (see details below)          \\
-\code{\generalindexentry} & see below                               & see below                        & general index entry          \\
-\code{\authorsindexentry} & see below                               & see below                        & authors index entry          \\
-\code{\nb}                & \code|\nb{Important!}|                  & \nb{Important!}                  & emphasised text              \\
-\code{\atitle}            & \code|\atitle{Functional Analysis}|     & \atitle{Functional Analysis}     & title of a work              \\
-\code{\commentary}        & \code|\commentary{Some comments.}|      & \commentary{Some comments.}      & comments                     \\
-\code{\species}           & \code|\species{Homo sapiens}|           & \species{Homo sapiens}           & biological species           \\
-\code{\french}            & \code|\french{t{\^e}te-{\`a}-t{\^e}te}| & \french{t{\^e}te-{\`a}-t{\^e}te} & inclusions in French         \\
-\code{\german}            & \code|\german{Grundbegriffe}|           & \german{Grundbegriffe}           & inclusions in German         \\
-\code{\latin}             & \code|\latin{inter alia}|               & \latin{inter alia}               & inclusions in Latin          \\
-\code{\shortquote}        & see below                               & see below                        & environment for short quotes \\
-\code{\longquote}         & see below                               & see below                        & environment for long quotes  \\
-\code{\eg}                & \code|\eg|                              & \eg                              &                              \\
-\code{\etc}               & \code|\etc|                             & \etc                             &                              \\
-\code{\ie}                & \code|\ie|                              & \ie                              &                              \\
-\code{\interalia}         & \code|\interalia|                       & \interalia                       &                              \\
-\code{\viz}               & \code|\viz|                             & \viz                             &                              \\
+\code!\generalindexentry! & see below                               & see below                        & general index entry          \\
+\code!\authorsindexentry! & see below                               & see below                        & authors index entry          \\
+\code!\nb!                & \code|\nb{Important!}|                  & \nb{Important!}                  & emphasised text              \\
+\code!\atitle!            & \code|\atitle{Functional Analysis}|     & \atitle{Functional Analysis}     & title of a work              \\
+\code!\commentary!        & \code|\commentary{Some comments.}|      & \commentary{Some comments.}      & comments                     \\
+\code!\species!           & \code|\species{Homo sapiens}|           & \species{Homo sapiens}           & biological species           \\
+\code!\french!            & \code|\french{t{\^e}te-{\`a}-t{\^e}te}| & \french{t{\^e}te-{\`a}-t{\^e}te} & inclusions in French         \\
+\code!\german!            & \code|\german{Grundbegriffe}|           & \german{Grundbegriffe}           & inclusions in German         \\
+\code!\latin!             & \code|\latin{inter alia}|               & \latin{inter alia}               & inclusions in Latin          \\
+\code!\shortquote!        & see below                               & see below                        & environment for short quotes \\
+\code!\longquote!         & see below                               & see below                        & environment for long quotes  \\
+\code!\eg!                & \code|\eg|                              & \eg                              &                              \\
+\code!\etc!               & \code|\etc|                             & \etc                             &                              \\
+\code!\ie!                & \code|\ie|                              & \ie                              &                              \\
+\code!\interalia!         & \code|\interalia|                       & \interalia                       &                              \\
+\code!\viz!               & \code|\viz|                             & \viz                             &                              \\
 \hline
 \caption{Summary of commands and environments defined in \program!lathalesians-commons!}
 \end{longtable}
@@ -315,8 +309,8 @@ The following options are allowed in the comma-separated key=value list:
 \hline
 Option             & Possible values                            & Default value   & Description                                      \\
 \hline
-\code{usegeometry} & \code{true}, \code{false}                  & \code{true}     & use \program{geometry} package to set up margins \\
-\code{geometry}    & as specified by \program{geometry} package & see below       & \program{geometry} arguments                     \\
+\code!usegeometry! & \code!true!, \code!false!                  & \code!true!     & use \program!geometry! package to set up margins \\
+\code!geometry!    & as specified by \program!geometry! package & see below       & \program!geometry! arguments                     \\
 \hline
 \caption{Options supported by \program!lathalesians-commons!}
 \end{longtable}
@@ -543,67 +537,72 @@ This package introduces some commands and environments to simplify the typesetti
 \hline
 Command               & Example: code                                              & Example: {\LaTeX}ed                                & Description                         \\
 \hline
-\code{\defeq}         & \code!$A \defeq \set{1,2,3}$!                              & $A \defeq \set{1,2,3}$                             & is equal by def. to (left to right) \\
-\code{\eqdef}         & \code!$\set{1,2,3} \eqdef A$!                              & $\set{1,2,3} \eqdef A$                             & is equal by def. to (right to left) \\
-\code{\idwith}        & \code!$a_i \idwith b_i$!                                   & $a_i \idwith b_i$                                  & is identified with                  \\
-\code{\tendsto}       & \code!$x \tendsto \infty$!                                 & $x \tendsto \infty$                                & tends to                            \\
-\code{\Implies}       & \code!$A \Implies B$!                                      & $A \Implies B$                                     & implies, only if                    \\
-\code{\OnlyIf}        & \code!$A \OnlyIf B$!                                       & $A \OnlyIf B$                                      & ditto                               \\
-\code{\ImpliedBy}     & \code!$A \ImpliedBy B$!                                    & $A \ImpliedBy B$                                   & implied by, if                      \\
-\code{\If}            & \code!$A \If B$!                                           & $A \If B$                                          & ditto                               \\
-\code{\Iff}           & \code!$A \Iff B$!                                          & $A \Iff B$                                         & if and only if                      \\
-\code{\N}             & \code!$\N$!                                                & $\N$                                               & natural numbers                     \\
-\code{\Nz}            & \code!$\Nz$!                                               & $\Nz$                                              & ditto, explicitly incl. 0           \\
-\code{\Nnz}           & \code!$\Nnz$!                                              & $\Nnz$                                             & nonzero natural numbers             \\
-\code{\Z}             & \code!$\Z$!                                                & $\Z$                                               & integers                            \\
-\code{\Zp}            & \code!$\Zp$!                                               & $\Zp$                                              & positive integers                   \\
-\code{\Znn}           & \code!$\Znn$!                                              & $\Znn$                                             & nonnegative integers                \\
-\code{\Zn}            & \code!$\Zn$!                                               & $\Zn$                                              & negative integers                   \\
-\code{\Znz}           & \code!$\Znz$!                                              & $\Znz$                                             & nonzero integers                    \\
-\code{\Q}             & \code!$\Q$!                                                & $\Q$                                               & rationals                           \\
-\code{\Qp}            & \code!$\Qp$!                                               & $\Qp$                                              & positive rationals                  \\
-\code{\Qnn}           & \code!$\Qnn$!                                              & $\Qnn$                                             & nonnegative rationals               \\
-\code{\Qn}            & \code!$\Qn$!                                               & $\Qn$                                              & negative rationals                  \\
-\code{\Qnz}           & \code!$\Qnz$!                                              & $\Qnz$                                             & nonzero rationals                   \\
-\code{\R}             & \code!$\R$!                                                & $\R$                                               & reals                               \\
-\code{\Rp}            & \code!$\Rp$!                                               & $\Rp$                                              & positive reals                      \\
-\code{\Rnn}           & \code!$\Rnn$!                                              & $\Rnn$                                             & nonnegative reals                   \\
-\code{\Rn}            & \code!$\Rn$!                                               & $\Rn$                                              & negative reals                      \\
-\code{\Rnz}           & \code!$\Rnz$!                                              & $\Rnz$                                             & nonzero reals                       \\
-\code{\C}             & \code!$\C$!                                                & $\C$                                               & complex numbers                     \\
-\code{\Cnz}           & \code!$\Cnz$!                                              & $\Cnz$                                             & nonzero complex numbers             \\
-\code{\Collection}    & \code!$\Collection{F}$!                                    & $\Collection{F}$                                   & name of a collection                \\
-\code{\Set}           & \code!$\Set{A}$!                                           & $\Set{A}$                                          & name of a set                       \\
-\code{\collection}    & \code!$\collection{A,B,\ldots}$!                           & $\collection{A,B,\ldots}$                          & definition of a collection          \\
+\code!\defeq!         & \code!$A \defeq \set{1,2,3}$!                              & $A \defeq \set{1,2,3}$                             & is equal by def. to (left to right) \\
+\code!\eqdef!         & \code!$\set{1,2,3} \eqdef A$!                              & $\set{1,2,3} \eqdef A$                             & is equal by def. to (right to left) \\
+\code!\idwith!        & \code!$a_i \idwith b_i$!                                   & $a_i \idwith b_i$                                  & is identified with                  \\
+\code!\tendsto!       & \code!$x \tendsto \infty$!                                 & $x \tendsto \infty$                                & tends to                            \\
+\code!\Implies!       & \code!$A \Implies B$!                                      & $A \Implies B$                                     & implies, only if                    \\
+\code!\OnlyIf!        & \code!$A \OnlyIf B$!                                       & $A \OnlyIf B$                                      & ditto                               \\
+\code!\ImpliedBy!     & \code!$A \ImpliedBy B$!                                    & $A \ImpliedBy B$                                   & implied by, if                      \\
+\code!\If!            & \code!$A \If B$!                                           & $A \If B$                                          & ditto                               \\
+\code!\Iff!           & \code!$A \Iff B$!                                          & $A \Iff B$                                         & if and only if                      \\
+\code!\N!             & \code!$\N$!                                                & $\N$                                               & natural numbers                     \\
+\code!\Nz!            & \code!$\Nz$!                                               & $\Nz$                                              & ditto, explicitly incl. 0           \\
+\code!\Nnz!           & \code!$\Nnz$!                                              & $\Nnz$                                             & nonzero natural numbers             \\
+\code!\Z!             & \code!$\Z$!                                                & $\Z$                                               & integers                            \\
+\code!\Zp!            & \code!$\Zp$!                                               & $\Zp$                                              & positive integers                   \\
+\code!\Znn!           & \code!$\Znn$!                                              & $\Znn$                                             & nonnegative integers                \\
+\code!\Zn!            & \code!$\Zn$!                                               & $\Zn$                                              & negative integers                   \\
+\code!\Znz!           & \code!$\Znz$!                                              & $\Znz$                                             & nonzero integers                    \\
+\code!\Q!             & \code!$\Q$!                                                & $\Q$                                               & rationals                           \\
+\code!\Qp!            & \code!$\Qp$!                                               & $\Qp$                                              & positive rationals                  \\
+\code!\Qnn!           & \code!$\Qnn$!                                              & $\Qnn$                                             & nonnegative rationals               \\
+\code!\Qn!            & \code!$\Qn$!                                               & $\Qn$                                              & negative rationals                  \\
+\code!\Qnz!           & \code!$\Qnz$!                                              & $\Qnz$                                             & nonzero rationals                   \\
+\code!\R!             & \code!$\R$!                                                & $\R$                                               & reals                               \\
+\code!\Rp!            & \code!$\Rp$!                                               & $\Rp$                                              & positive reals                      \\
+\code!\Rnn!           & \code!$\Rnn$!                                              & $\Rnn$                                             & nonnegative reals                   \\
+\code!\Rn!            & \code!$\Rn$!                                               & $\Rn$                                              & negative reals                      \\
+\code!\Rnz!           & \code!$\Rnz$!                                              & $\Rnz$                                             & nonzero reals                       \\
+\code!\Rx!            & \code!$\Rx$!                                               & $\Rx$                                              & extended reals                      \\
+\code!\Rpx!           & \code!$\Rpx$!                                              & $\Rpx$                                             & extended positive reals             \\
+\code!\Rnnx!          & \code!$\Rnnx$!                                             & $\Rnnx$                                            & extended nonnegative reals          \\
+\code!\Rnx!           & \code!$\Rnx$!                                              & $\Rnx$                                             & extended negative reals             \\
+\code!\Rnzx!          & \code!$\Rnzx$!                                             & $\Rnzx$                                            & extended nonzero reals              \\
+\code!\C!             & \code!$\C$!                                                & $\C$                                               & complex numbers                     \\
+\code!\Cnz!           & \code!$\Cnz$!                                              & $\Cnz$                                             & nonzero complex numbers             \\
+\code!\Collection!    & \code!$\Collection{F}$!                                    & $\Collection{F}$                                   & name of a collection                \\
+\code!\Set!           & \code!$\Set{A}$!                                           & $\Set{A}$                                          & name of a set                       \\
+\code!\collection!    & \code!$\collection{A,B,\ldots}$!                           & $\collection{A,B,\ldots}$                          & definition of a collection          \\
                       & \code!$\collection{O\in\Collection{T}}[O\text{ clopen}]$!  & $\collection{O\in\Collection{T}}[O\text{ clopen}]$ &                                     \\
-\code{\set}           & \code!$\set{1,2,3}$!                                       & $\set{1,2,3}$                                      & definition of a set                 \\
+\code!\set!           & \code!$\set{1,2,3}$!                                       & $\set{1,2,3}$                                      & definition of a set                 \\
                       & \code!$\set{x\in\N}[x\text{ even}]$!                       & $\set{x\in\N}[x\text{ even}]$                      &                                     \\
-\code{\seqel}         & \code!$\seqel{a_k}$!                                       & $\seqel{a_k}$                                      & name of element of a sequence       \\
+\code!\seqel!         & \code!$\seqel{a_k}$!                                       & $\seqel{a_k}$                                      & name of element of a sequence       \\
                       & \code!$\seqel{a_k}[k\in\N]$!                               & $\seqel{a_k}[k\in\N]$                              &                                     \\
                       & \code!$\seqel{a_k}[k=1][\infty]$!                          & $\seqel{a_k}[k=1][\infty]$                         &                                     \\
-\code{\sequence}      & \code!$\sequence{2, 4, 6, \ldots}$!                        & $\sequence{2, 4, 6, \ldots}$                       & definition of a sequence            \\
-\code{\tuple}         & \code!$\tuple{2, 4, 6}$!                                   & $\tuple{2, 4, 6}$                                  & definition of a tuple               \\
-\code{\st}            & \code!$x\in\N \st x\text{ even}$!                          & $x\in\N \st x\text{ even}$                         & such that                           \\
-\code{\sset}          & \code!$\Z \sset \R$!                                       & $\Z \sset \R$                                      & subset                              \\
-\code{\Sset}          & \code!$\R \Sset \Z$!                                       & $\R \Sset \Z$                                      & superset                            \\
-\code{\psset}         & \code!$\Z \psset \R$!                                      & $\Z \psset \R$                                     & proper subset                       \\
-\code{\pSset}         & \code!$\R \pSset \Z$!                                      & $\R \pSset \Z$                                     & proper superset                     \\
-\code{\setdiff}       & \code!$A \setdiff B$!                                      & $A \setdiff B$                                     & set difference                      \\
-\code{\symmdiff}      & \code!$A \symmdiff B$!                                     & $A \symmdiff B$                                    & symmetric difference                \\
-\code{\setcomplement} & \code!$\setcomplement{A}$!                                 & $\setcomplement{A}$                                & set complement                      \\
-\code{\closure}       & \code!$\closure{A}$!                                       & $\closure{A}$                                      & closure                             \\
-\code{\interior}      & \code!$\interior{A}$!                                      & $\interior{A}$                                     & interior                            \\
-\code{\embed}         & \code!$X \embed Y$!                                        & $X \embed Y$                                       & topological embedding               \\
-\code{\embedsinto}    & \code!$X \embedsinto Y$!                                   & $X \embedsinto Y$                                  & ditto                               \\
-\code{\functype}      & \code!$\functype{\C}{\Rnn}$!                               & $\functype{\C}{\Rnn}$                              & function type                       \\
+\code!\sequence!      & \code!$\sequence{2, 4, 6, \ldots}$!                        & $\sequence{2, 4, 6, \ldots}$                       & definition of a sequence            \\
+\code!\tuple!         & \code!$\tuple{2, 4, 6}$!                                   & $\tuple{2, 4, 6}$                                  & definition of a tuple               \\
+\code!\st!            & \code!$x\in\N \st x\text{ even}$!                          & $x\in\N \st x\text{ even}$                         & such that                           \\
+\code!\sset!          & \code!$\Z \sset \R$!                                       & $\Z \sset \R$                                      & subset                              \\
+\code!\Sset!          & \code!$\R \Sset \Z$!                                       & $\R \Sset \Z$                                      & superset                            \\
+\code!\psset!         & \code!$\Z \psset \R$!                                      & $\Z \psset \R$                                     & proper subset                       \\
+\code!\pSset!         & \code!$\R \pSset \Z$!                                      & $\R \pSset \Z$                                     & proper superset                     \\
+\code!\setdiff!       & \code!$A \setdiff B$!                                      & $A \setdiff B$                                     & set difference                      \\
+\code!\symmdiff!      & \code!$A \symmdiff B$!                                     & $A \symmdiff B$                                    & symmetric difference                \\
+\code!\setcomplement! & \code!$\setcomplement{A}$!                                 & $\setcomplement{A}$                                & set complement                      \\
+\code!\closure!       & \code!$\closure{A}$!                                       & $\closure{A}$                                      & closure                             \\
+\code!\interior!      & \code!$\interior{A}$!                                      & $\interior{A}$                                     & interior                            \\
+\code!\embed!         & \code!$X \embed Y$!                                        & $X \embed Y$                                       & topological embedding               \\
+\code!\embedsinto!    & \code!$X \embedsinto Y$!                                   & $X \embedsinto Y$                                  & ditto                               \\
+\code!\functype!      & \code!$\functype{\C}{\Rnn}$!                               & $\functype{\C}{\Rnn}$                              & function type                       \\
                       & \code!$\functype[f]{\C}{\Rnn}$!                            & $\functype[f]{\C}{\Rnn}$                           &                                     \\
-\code{\funcdefn}      & \code!$\funcdefn{x}{x^2}$!                                 & $\funcdefn{x}{x^2}$                                & function definition                 \\
-                      & \code!$\funcdefn[f]{x}{x^2}$!                              & $$\funcdefn[f]{x}{x^2}$$                           &                                     \\
-\code{\indfunc}       & \code!$\indfunc{A}(x)$!                                    & $\indfunc{A}(x)$                                   & indicator function of a set         \\
-\code{\zerofunc}      & \code!$\zerofunc(x)$!                                      & $\zerofunc(x)$                                     & zero function                       \\
-\code{\argmin}        & \code!$\argmin_{x\in A} f(x)$!                             & $\argmin_{x\in A} f(x)$                            & arguments of the minima             \\
-\code{\argmax}        & \code!$\argmax_{x\in A} f(x)$!                             & $\argmax_{x\in A} f(x)$                            & arguments of the maxima             \\
-\code{\norm}          & \code!$\norm{x}_2$!                                        & $\norm{x}_2$                                       & norm                                \\
+\code!\funcdefn!      & \code!$\funcdefn{x}{x^2}$!                                 & $\funcdefn{x}{x^2}$                                & function definition                 \\
+                      & \code!$\funcdefn[f]{x}{x^2}$!                              & $\funcdefn[f]{x}{x^2}$                             &                                     \\
+\code!\indfunc!       & \code!$\indfunc{A}(x)$!                                    & $\indfunc{A}(x)$                                   & indicator function of a set         \\
+\code!\zerofunc!      & \code!$\zerofunc(x)$!                                      & $\zerofunc(x)$                                     & zero function                       \\
+\code!\argmin!        & \code!$\argmin_{x\in A} f(x)$!                             & $\argmin_{x\in A} f(x)$                            & arguments of the minima             \\
+\code!\argmax!        & \code!$\argmax_{x\in A} f(x)$!                             & $\argmax_{x\in A} f(x)$                            & arguments of the maxima             \\
+\code!\norm!          & \code!$\norm{x}_2$!                                        & $\norm{x}_2$                                       & norm                                \\
 \hline
 \caption{Summary of commands and environments defined in \code!lathalesians-analysis!}
 \end{longtable}
@@ -616,14 +615,15 @@ Command               & Example: code                                           
 \begin{footnotesize}
 \begin{longtable}{llll}
 \hline
-Command            & Example: code          & Example: {\LaTeX}ed & Description      \\
+Command            & Example: code          & Example: {\LaTeX}ed & Description               \\
 \hline
-\code{\transpose}  & \code!$\transpose{v}$! & $\transpose{v}$     & transpose        \\
-\code{\tr}         & \code!$\tr{A}$!        & $\tr{A}$            & trace            \\
-\code{\rank}       & \code!$\rank{A}$!      & $\rank{A}$          & rank             \\
-\code{\nul}        & \code!$\nul{A}$!       & $\nul{A}$           & nullity          \\
-\code{\V}          & \code!$\V{v}$!         & $\V{v}$             & name of a vector \\
-\code{\M}          & \code!$\M{A}$!         & $\M{A}$             & name of a matrix \\
+\code!\transpose!  & \code!$\transpose{v}$! & $\transpose{v}$     & transpose                 \\
+\code!\tr!         & \code!$\tr{A}$!        & $\tr{A}$            & trace                     \\
+\code!\rank!       & \code!$\rank{A}$!      & $\rank{A}$          & rank                      \\
+\code!\nul!        & \code!$\nul{A}$!       & $\nul{A}$           & nullity                   \\
+\code!\V!          & \code!$\V{v}$!         & $\V{v}$             & name of a vector          \\
+\code!\M!          & \code!$\M{A}$!         & $\M{A}$             & name of a matrix          \\
+\code!\vect!       & \code!$\vect{\M{A}}$!  & $\vect{\M{A}}$      & vectorisation of a matrix \\
 \hline
 \caption{Summary of commands and environments defined in \code!lathalesians-linear!}
 \end{longtable}
@@ -659,43 +659,43 @@ By extension, this package is useful for works in stochastic analysis, stochasti
 \hline
 Command              & Example: code                                  & Example: {\LaTeX}ed                     & Description               \\
 \hline
-\code{\SampleSpace}  & \code!$\SampleSpace$!                          & $\SampleSpace$                          & sample space              \\
-\code{\Measures}     & \code!$\Measures[X]$!                          & $\Measures[X]$                          & measure space             \\
+\code!\SampleSpace!  & \code!$\SampleSpace$!                          & $\SampleSpace$                          & sample space              \\
+\code!\Measures!     & \code!$\Measures[X]$!                          & $\Measures[X]$                          & measure space             \\
                      & \code!$\Measures$!                             & $\Measures$                             &                           \\
-\code{\ProbMeasures} & \code!$\ProbMeasures[X]$!                      & $\ProbMeasures[X]$                      & probability measure space \\
+\code!\ProbMeasures! & \code!$\ProbMeasures[X]$!                      & $\ProbMeasures[X]$                      & probability measure space \\
                      & \code!$\ProbMeasures$!                         & $\ProbMeasures$                         &                           \\
-\code{\Borel}        & \code!$\Borel[\R]$!                            & $\Borel[\R]$                            & Borel $\sigma$-algebra    \\
+\code!\Borel!        & \code!$\Borel[\R]$!                            & $\Borel[\R]$                            & Borel $\sigma$-algebra    \\
                      & \code!$\Borel$!                                & $\Borel$                                &                           \\
-\code{\Time}         & \code!$\Time$!                                 & $\Time$                                 & time of a process         \\
-\code{\State}        & \code!$\State$!                                & $\State$                                & state of a process        \\
-\code{\aew}          & \code!\aew!                                    & \aew                                    & almost everywhere         \\
-\code{\as}           & \code!\as!                                     & \as                                     & almost surely             \\
-\code{\convlaw}      & \code!$\convlaw$!                              & $\convlaw$                              & converges in law          \\
-\code{\convprob}     & \code!$\convprob$!                             & $\convprob$                             & converges in probability  \\
-\code{\convas}       & \code!$\convas$!                               & $\convas$                               & converges almost surely   \\
-\code{\convweak}     & \code!$\convweak$!                             & $\convweak$                             & converges weakly          \\
-\code{\support}      & \code!$\support \mu$!                          & $\support \mu$                          & support of a measure      \\
-\code{\Prob}         & \code!$\Prob$!                                 & $\Prob$                                 & probability               \\
+\code!\Time!         & \code!$\Time$!                                 & $\Time$                                 & time of a process         \\
+\code!\State!        & \code!$\State$!                                & $\State$                                & state of a process        \\
+\code!\aew!          & \code!\aew!                                    & \aew                                    & almost everywhere         \\
+\code!\as!           & \code!\as!                                     & \as                                     & almost surely             \\
+\code!\convlaw!      & \code!$\convlaw$!                              & $\convlaw$                              & converges in law          \\
+\code!\convprob!     & \code!$\convprob$!                             & $\convprob$                             & converges in probability  \\
+\code!\convas!       & \code!$\convas$!                               & $\convas$                               & converges almost surely   \\
+\code!\convweak!     & \code!$\convweak$!                             & $\convweak$                             & converges weakly          \\
+\code!\support!      & \code!$\support \mu$!                          & $\support \mu$                          & support of a measure      \\
+\code!\Prob!         & \code!$\Prob$!                                 & $\Prob$                                 & probability               \\
                      & \code!$\Prob[A]$!                              & $\Prob[A]$                              &                           \\
-\code{\ProbMeasure}  & \code!$\ProbMeasure{Q}$!                       & $\ProbMeasure{Q}$                       & probability measure       \\
+\code!\ProbMeasure!  & \code!$\ProbMeasure{Q}$!                       & $\ProbMeasure{Q}$                       & probability measure       \\
                      & \code!$\ProbMeasure{Q}[A]$!                    & $\ProbMeasure{Q}[A]$                    &                           \\
-\code{\given}        & \code!$\Prob[A \given B]$!                     & $\Prob[A \given B]$                     & given (conditioned on)    \\
-\code{\E}            & \code!$\E[X]$!                                 & $\E[X]$                                 & expectation operator      \\
+\code!\given!        & \code!$\Prob[A \given B]$!                     & $\Prob[A \given B]$                     & given (conditioned on)    \\
+\code!\E!            & \code!$\E[X]$!                                 & $\E[X]$                                 & expectation operator      \\
                      & \code!$\E[X][\ProbMeasure{Q}]$!                & $\E[X][\ProbMeasure{Q}]$                &                           \\
                      & \code!$\E$!                                    & $\E$                                    &                           \\
-\code{\Var}          & \code!$\Var[X]$!                               & $\Var[X]$                               & variance                  \\
+\code!\Var!          & \code!$\Var[X]$!                               & $\Var[X]$                               & variance                  \\
                      & \code!$\Var[X][\ProbMeasure{Q}]$!              & $\Var[X][\ProbMeasure{Q}]$              &                           \\
                      & \code!$\Var$!                                  & $\Var$                                  &                           \\
-\code{\Cov}          & \code!$\Cov[X,Y]$!                             & $\Cov[X,Y]$                             & covariance                \\
+\code!\Cov!          & \code!$\Cov[X,Y]$!                             & $\Cov[X,Y]$                             & covariance                \\
                      & \code!$\Cov[X,Y][\ProbMeasure{Q}]$!            & $\Cov[X,Y][\ProbMeasure{Q}]$            &                           \\
                      & \code!$\Cov$!                                  & $\Cov$                                  &                           \\
-\code{\Cor}          & \code!$\Cor[X,Y]$!                             & $\Cor[X,Y]$                             & correlation               \\
+\code!\Cor!          & \code!$\Cor[X,Y]$!                             & $\Cor[X,Y]$                             & correlation               \\
                      & \code!$\Cor[X,Y][\ProbMeasure{Q}]$!            & $\Cor[X,Y][\ProbMeasure{Q}]$            &                           \\
                      & \code!$\Cor$!                                  & $\Cor$                                  &                           \\
-\code{\Normal}       & \code!$\Normal{\mu}{\sigma^2}$!                & $\Normal{\mu}{\sigma^2}$                & normal distribution       \\
-\code{\WS}           & \code!$\WS{\mu}{\sigma^2}$!                    & $\WS{\mu}{\sigma^2}$                    & wide sense distribution   \\
-\code{\distributed}  & \code!$X \distributed \Normal{\mu}{\sigma^2}$! & $X \distributed \Normal{\mu}{\sigma^2}$ & distributed as            \\
-\code{\normalpdf}    & \code!$\normalpdf{\mu}{\sigma^2}$!             & $\normalpdf{\mu}{\sigma^2}$             & normal p.d.f              \\
+\code!\Normal!       & \code!$\Normal{\mu}{\sigma^2}$!                & $\Normal{\mu}{\sigma^2}$                & normal distribution       \\
+\code!\WS!           & \code!$\WS{\mu}{\sigma^2}$!                    & $\WS{\mu}{\sigma^2}$                    & wide sense distribution   \\
+\code!\distributed!  & \code!$X \distributed \Normal{\mu}{\sigma^2}$! & $X \distributed \Normal{\mu}{\sigma^2}$ & distributed as            \\
+\code!\normalpdf!    & \code!$\normalpdf{\mu}{\sigma^2}$!             & $\normalpdf{\mu}{\sigma^2}$             & normal p.d.f              \\
                      & \code!$\normalpdf[x]{\mu}{\sigma^2}$!          & $\normalpdf[x]{\mu}{\sigma^2}$          &                           \\
 \hline
 \caption{Summary of commands and environments defined in \code!lathalesians-probability!}
@@ -713,66 +713,66 @@ This package defines symbols for some common category names. The naming and type
 \hline
 Code                  & {\LaTeX}ed result   \\
 \hline
-\code{$\CatAL$}       & $\CatAL$            \\
-\code{$\CatALop$}     & $\CatALop$          \\
-\code{$\CatALG$}      & $\CatALG$           \\
-\code{$\CatALGDOM$}   & $\CatALGDOM$        \\
-\code{$\CatALGDOMD$}  & $\CatALGDOMD$       \\
-\code{$\CatALGDOMG$}  & $\CatALGDOMG$       \\
-\code{$\CatArL$}      & $\CatArL$           \\
-\code{$\CatArLop$}    & $\CatArLop$         \\
-\code{$\CatBCSOB$}    & $\CatBCSOB$         \\
-\code{$\CatBF$}       & $\CatBF$            \\
-\code{$\CatCCSOB$}    & $\CatCCSOB$         \\
-\code{$\CatCL$}       & $\CatCL$            \\
-\code{$\CatCLd$}      & $\CatCLd$           \\
-\code{$\CatCLm$}      & $\CatCLm$           \\
-\code{$\CatCLop$}     & $\CatCLop$          \\
-\code{$\CatCONT$}     & $\CatCONT$          \\
-\code{$\CatCPOSP$}    & $\CatCPOSP$         \\
-\code{$\CatCS$}       & $\CatCS$            \\
-\code{$\CatCSEM$}     & $\CatCSEM$          \\
-\code{$\CatDAR$}      & $\CatDAR$           \\
-\code{$\CatDCPO$}     & $\CatDCPO$          \\
-\code{$\CatDCPOp$}    & $\CatDCPOp$         \\
-\code{$\CatDCPOps$}   & $\CatDCPOps$        \\
-\code{$\CatDCPOD$}    & $\CatDCPOD$         \\
-\code{$\CatDCPOG$}    & $\CatDCPOG$         \\
-\code{$\CatDCPOFILT$} & $\CatDCPOFILT$      \\
-\code{$\CatDL$}       & $\CatDL$            \\
-\code{$\CatDLat$}     & $\CatDLat$          \\
-\code{$\CatDOM$}      & $\CatDOM$           \\
-\code{$\CatDOMD$}     & $\CatDOMD$          \\
-\code{$\CatDOMG$}     & $\CatDOMG$          \\
-\code{$\CatDOMFILT$}  & $\CatDOMFILT$       \\
-\code{$\CatFRM$}      & $\CatFRM$           \\
-\code{$\CatFRMz$}     & $\CatFRMz$          \\
-\code{$\CatFS$}       & $\CatFS$            \\
-\code{$\CatGRAPH$}    & $\CatGRAPH$         \\
-\code{$\CatH$}        & $\CatH$             \\
-\code{$\CatINF$}      & $\CatINF$           \\
-\code{$\CatINFup$}    & $\CatINFup$         \\
-\code{$\CatLAT$}      & $\CatLAT$           \\
-\code{$\CatLCSOB$}    & $\CatLCSOB$         \\
-\code{$\CatLDOM$}     & $\CatLDOM$          \\
-\code{$\CatPOID$}     & $\CatPOID$          \\
-\code{$\CatPOSET$}    & $\CatPOSET$         \\
-\code{$\CatPOSETD$}   & $\CatPOSETD$        \\
-\code{$\CatPOSETG$}   & $\CatPOSETG$        \\
-\code{$\CatSCFRM$}    & $\CatSCFRM$         \\
-\code{$\CatSCFRMi$}   & $\CatSCFRMi$        \\
-\code{$\CatSCTOP$}    & $\CatSCTOP$         \\
-\code{$\CatSEM$}      & $\CatSEM$           \\
-\code{$\CatSEMI$}     & $\CatSEMI$          \\
-\code{$\CatSET$}      & $\CatSET$           \\
-\code{$\CatSLCTOP$}   & $\CatSLCTOP$        \\
-\code{$\CatSOB$}      & $\CatSOB$           \\
-\code{$\CatSUP$}      & $\CatSUP$           \\
-\code{$\CatSUPu$}     & $\CatSUPu$          \\
-\code{$\CatSUPz$}     & $\CatSUPz$          \\
-\code{$\CatTCPOSP$}   & $\CatTCPOSP$        \\
-\code{$\CatTOP$}      & $\CatTOP$           \\
-\code{$\CatUPS$}      & $\CatUPS$           \\
+\code!$\CatAL$!       & $\CatAL$            \\
+\code!$\CatALop$!     & $\CatALop$          \\
+\code!$\CatALG$!      & $\CatALG$           \\
+\code!$\CatALGDOM$!   & $\CatALGDOM$        \\
+\code!$\CatALGDOMD$!  & $\CatALGDOMD$       \\
+\code!$\CatALGDOMG$!  & $\CatALGDOMG$       \\
+\code!$\CatArL$!      & $\CatArL$           \\
+\code!$\CatArLop$!    & $\CatArLop$         \\
+\code!$\CatBCSOB$!    & $\CatBCSOB$         \\
+\code!$\CatBF$!       & $\CatBF$            \\
+\code!$\CatCCSOB$!    & $\CatCCSOB$         \\
+\code!$\CatCL$!       & $\CatCL$            \\
+\code!$\CatCLd$!      & $\CatCLd$           \\
+\code!$\CatCLm$!      & $\CatCLm$           \\
+\code!$\CatCLop$!     & $\CatCLop$          \\
+\code!$\CatCONT$!     & $\CatCONT$          \\
+\code!$\CatCPOSP$!    & $\CatCPOSP$         \\
+\code!$\CatCS$!       & $\CatCS$            \\
+\code!$\CatCSEM$!     & $\CatCSEM$          \\
+\code!$\CatDAR$!      & $\CatDAR$           \\
+\code!$\CatDCPO$!     & $\CatDCPO$          \\
+\code!$\CatDCPOp$!    & $\CatDCPOp$         \\
+\code!$\CatDCPOps$!   & $\CatDCPOps$        \\
+\code!$\CatDCPOD$!    & $\CatDCPOD$         \\
+\code!$\CatDCPOG$!    & $\CatDCPOG$         \\
+\code!$\CatDCPOFILT$! & $\CatDCPOFILT$      \\
+\code!$\CatDL$!       & $\CatDL$            \\
+\code!$\CatDLat$!     & $\CatDLat$          \\
+\code!$\CatDOM$!      & $\CatDOM$           \\
+\code!$\CatDOMD$!     & $\CatDOMD$          \\
+\code!$\CatDOMG$!     & $\CatDOMG$          \\
+\code!$\CatDOMFILT$!  & $\CatDOMFILT$       \\
+\code!$\CatFRM$!      & $\CatFRM$           \\
+\code!$\CatFRMz$!     & $\CatFRMz$          \\
+\code!$\CatFS$!       & $\CatFS$            \\
+\code!$\CatGRAPH$!    & $\CatGRAPH$         \\
+\code!$\CatH$!        & $\CatH$             \\
+\code!$\CatINF$!      & $\CatINF$           \\
+\code!$\CatINFup$!    & $\CatINFup$         \\
+\code!$\CatLAT$!      & $\CatLAT$           \\
+\code!$\CatLCSOB$!    & $\CatLCSOB$         \\
+\code!$\CatLDOM$!     & $\CatLDOM$          \\
+\code!$\CatPOID$!     & $\CatPOID$          \\
+\code!$\CatPOSET$!    & $\CatPOSET$         \\
+\code!$\CatPOSETD$!   & $\CatPOSETD$        \\
+\code!$\CatPOSETG$!   & $\CatPOSETG$        \\
+\code!$\CatSCFRM$!    & $\CatSCFRM$         \\
+\code!$\CatSCFRMi$!   & $\CatSCFRMi$        \\
+\code!$\CatSCTOP$!    & $\CatSCTOP$         \\
+\code!$\CatSEM$!      & $\CatSEM$           \\
+\code!$\CatSEMI$!     & $\CatSEMI$          \\
+\code!$\CatSET$!      & $\CatSET$           \\
+\code!$\CatSLCTOP$!   & $\CatSLCTOP$        \\
+\code!$\CatSOB$!      & $\CatSOB$           \\
+\code!$\CatSUP$!      & $\CatSUP$           \\
+\code!$\CatSUPu$!     & $\CatSUPu$          \\
+\code!$\CatSUPz$!     & $\CatSUPz$          \\
+\code!$\CatTCPOSP$!   & $\CatTCPOSP$        \\
+\code!$\CatTOP$!      & $\CatTOP$           \\
+\code!$\CatUPS$!      & $\CatUPS$           \\
 \hline
 \caption{Categories supported by \program!lathalesians-categories!}
 \end{longtable}
@@ -793,7 +793,7 @@ The following options are allowed in the comma-separated key=value list:
 \hline
 Option             & Possible values    & Default value & Description                                                       \\
 \hline
-\code{ssfnotation} & \code{a}, \code{b} & \code{b}      & whether \code{\ssf} is equivalent to \code{\ssfa} or \code{\ssfb} \\
+\code!ssfnotation! & \code!a!, \code!b! & \code!b!      & whether \code!\ssf! is equivalent to \code!\ssfa! or \code!\ssfb! \\
 \hline
 \caption{Options supported by \program!lathalesians-domains!}
 \end{longtable}
@@ -810,35 +810,35 @@ Example:
 \hline
 Command                         & Example: code                               & Example: {\LaTeX}ed                  & Description                             \\
 \hline
-\code{\lteq}, \code{\lesseq}    & \code!$a \lteq b$!                          & $a \lteq b$                          & ``Less than or equal to'' for posets    \\
-\code{\lt}, \code{\less}        & \code!$a \lt b$!                            & $a \lt b$                            & ``Less than'' for posets                \\
-\code{\eq}                      & \code!$a \eq b$!                            & $a \eq b$                            & ``Equal'' for posets, same as $=$       \\
-\code{\gt}, \code{\greater}     & \code!$a \gt b$!                            & $a \lt b$                            & ``Greater than'' for posets             \\
-\code{\gteq}, \code{\greatereq} & \code!$a \gteq b$!                          & $a \gteq b$                          & ``Greater than or equal to'' for posets \\
-\code{\wb}, \code{\waybelow}    & \code!$a \wb b$!                            & $a \wb b$                            & ``Way-below'' for dcpo's                \\
-\code{\wa}, \code{\wayabove}    & \code!$a \wa b$!                            & $a \wa b$                            & ``Way-above'' for dcpo's                \\
-\code{\join}                    & \code!$a \join b$!                          & $a \join b$                          & Join of two elements                    \\
-\code{\meet}                    & \code!$a \meet b$!                          & $a \meet b$                          & Meet of two elements                    \\
-\code{\setjoin}                 & \code!$\setjoin A$!                         & $\setjoin A$                         & Join (supremum) of a set                \\
-\code{\setmeet}                 & \code!$\setmeet A$!                         & $\setmeet A$                         & Meet (infimum) of a set                 \\
-\code{\dsetjoin}                & \code!$\dsetjoin A$!                        & $\dsetjoin A$                        & Directed supremum                       \\
-\code{\fsetmeet}                & \code!$\fsetmeet A$!                        & $\fsetmeet A$                        & Filtered infimum                        \\
-\code{\belowset}                & \code!$\belowset{A}$!                       & $\belowset{A}$                       & Downward closure w.r.t. below           \\
-\code{\aboveset}                & \code!$\aboveset{A}$!                       & $\aboveset{A}$                       & Upward closure w.r.t. below             \\
-\code{\waybelowset}             & \code!$\waybelowset{A}$!                    & $\waybelowset{A}$                    & Downward closure w.r.t. way-below       \\
-\code{\wayaboveset}             & \code!$\wayaboveset{A}$!                    & $\wayaboveset{A}$                    & Upward closure w.r.t. way-below         \\
-\code{\ssfa}                    & \code!$\ssfa{U}{s}$!                        & $\ssfa{U}{s}$                        & Single-step function (notation a)       \\
-\code{\ssfb}                    & \code!$\ssfb{U}{s}$!                        & $\ssfb{U}{s}$                        & Single-step function (notation b)       \\
-\code{\ssf}                     & \code!$\ssf{U}{s}$!                         & $\ssf{U}{s}$                         & Notation a or b (default)               \\
-\code{\topfuncspace}            & \code!$\topfuncspace{X}{Y}$!                & $\topfuncspace{X}{Y}$                & Topological function space              \\
-\code{\domfuncspace}            & \code!$\domfuncspace{X}{Y}$!                & $\domfuncspace{X}{Y}$                & Domain-theoretic function space         \\
-\code{\Intervals}               & \code!$\Intervals{[0,1]}$!                  & $\Intervals{[0,1]}$                  & Interval domain                         \\
-\code{\UpperSpace}              & \code!$\UpperSpace{X}$!                     & $\UpperSpace{X}$                     & Upper space                             \\
-\code{\PPD}                     & \code!$\PPD{\Intervals{[0,1]}}$!            & $\PPD{\Intervals{[0,1]}}$            & Probabilistic power domain (p.p.d.)     \\
-\code{\NPPD}                    & \code!$\NPPD{\Intervals{[0,1]}}$!           & $\NPPD{\Intervals{[0,1]}}$           & Normalised p.p.d.                       \\
-\code{\Maximals}                & \code!$\Maximals{\Intervals{[0,1]}}$!       & $\Maximals{\Intervals{[0,1]}}$       & Maximal elements                        \\
-\code{\Minimals}                & \code!$\Minimals{\Intervals{[0,1]}}$!       & $\Minimals{\Intervals{[0,1]}}$       & Minimal elements                        \\
-\code{\Con}                     & \code!$\Con_{(A,\lteq)}(a_1, \ldots, a_n)$! & $\Con_{(A,\lteq)}(a_1, \ldots, a_n)$ & Consistency predicate                   \\
+\code!\lteq!, \code!\lesseq!    & \code!$a \lteq b$!                          & $a \lteq b$                          & ``Less than or equal to'' for posets    \\
+\code!\lt!, \code!\less!        & \code!$a \lt b$!                            & $a \lt b$                            & ``Less than'' for posets                \\
+\code!\eq!                      & \code!$a \eq b$!                            & $a \eq b$                            & ``Equal'' for posets, same as $=$       \\
+\code!\gt!, \code!\greater!     & \code!$a \gt b$!                            & $a \lt b$                            & ``Greater than'' for posets             \\
+\code!\gteq!, \code!\greatereq! & \code!$a \gteq b$!                          & $a \gteq b$                          & ``Greater than or equal to'' for posets \\
+\code!\wb!, \code!\waybelow!    & \code!$a \wb b$!                            & $a \wb b$                            & ``Way-below'' for dcpo's                \\
+\code!\wa!, \code!\wayabove!    & \code!$a \wa b$!                            & $a \wa b$                            & ``Way-above'' for dcpo's                \\
+\code!\join!                    & \code!$a \join b$!                          & $a \join b$                          & Join of two elements                    \\
+\code!\meet!                    & \code!$a \meet b$!                          & $a \meet b$                          & Meet of two elements                    \\
+\code!\setjoin!                 & \code!$\setjoin A$!                         & $\setjoin A$                         & Join (supremum) of a set                \\
+\code!\setmeet!                 & \code!$\setmeet A$!                         & $\setmeet A$                         & Meet (infimum) of a set                 \\
+\code!\dsetjoin!                & \code!$\dsetjoin A$!                        & $\dsetjoin A$                        & Directed supremum                       \\
+\code!\fsetmeet!                & \code!$\fsetmeet A$!                        & $\fsetmeet A$                        & Filtered infimum                        \\
+\code!\belowset!                & \code!$\belowset{A}$!                       & $\belowset{A}$                       & Downward closure w.r.t. below           \\
+\code!\aboveset!                & \code!$\aboveset{A}$!                       & $\aboveset{A}$                       & Upward closure w.r.t. below             \\
+\code!\waybelowset!             & \code!$\waybelowset{A}$!                    & $\waybelowset{A}$                    & Downward closure w.r.t. way-below       \\
+\code!\wayaboveset!             & \code!$\wayaboveset{A}$!                    & $\wayaboveset{A}$                    & Upward closure w.r.t. way-below         \\
+\code!\ssfa!                    & \code!$\ssfa{U}{s}$!                        & $\ssfa{U}{s}$                        & Single-step function (notation a)       \\
+\code!\ssfb!                    & \code!$\ssfb{U}{s}$!                        & $\ssfb{U}{s}$                        & Single-step function (notation b)       \\
+\code!\ssf!                     & \code!$\ssf{U}{s}$!                         & $\ssf{U}{s}$                         & Notation a or b (default)               \\
+\code!\topfuncspace!            & \code!$\topfuncspace{X}{Y}$!                & $\topfuncspace{X}{Y}$                & Topological function space              \\
+\code!\domfuncspace!            & \code!$\domfuncspace{X}{Y}$!                & $\domfuncspace{X}{Y}$                & Domain-theoretic function space         \\
+\code!\Intervals!               & \code!$\Intervals{[0,1]}$!                  & $\Intervals{[0,1]}$                  & Interval domain                         \\
+\code!\UpperSpace!              & \code!$\UpperSpace{X}$!                     & $\UpperSpace{X}$                     & Upper space                             \\
+\code!\PPD!                     & \code!$\PPD{\Intervals{[0,1]}}$!            & $\PPD{\Intervals{[0,1]}}$            & Probabilistic power domain (p.p.d.)     \\
+\code!\NPPD!                    & \code!$\NPPD{\Intervals{[0,1]}}$!           & $\NPPD{\Intervals{[0,1]}}$           & Normalised p.p.d.                       \\
+\code!\Maximals!                & \code!$\Maximals{\Intervals{[0,1]}}$!       & $\Maximals{\Intervals{[0,1]}}$       & Maximal elements                        \\
+\code!\Minimals!                & \code!$\Minimals{\Intervals{[0,1]}}$!       & $\Minimals{\Intervals{[0,1]}}$       & Minimal elements                        \\
+\code!\Con!                     & \code!$\Con_{(A,\lteq)}(a_1, \ldots, a_n)$! & $\Con_{(A,\lteq)}(a_1, \ldots, a_n)$ & Consistency predicate                   \\
 \hline
 \caption{Summary of commands and environments defined in \code!lathalesians-domains!}
 \end{longtable}
@@ -864,12 +864,12 @@ This small package, still very much under construction, defines some commands an
 \hline
 Command                           & Example: code                                           & Example: {\LaTeX}ed                              & Description                 \\
 \hline
-\code{\ComputableFunctions}       & \code!$\ComputableFunctions$!                           & $\ComputableFunctions$                           & computable functions        \\
-\code{\PartialRecursiveFunctions} & \code!$\PartialRecursiveFunctions$!                     & $\PartialRecursiveFunctions$                     & partial recursive functions \\
-\code{\partfunc}                  & \code!$\delta \partfunc \Sigma^{\omega} \rightarrow M$! & $\delta \partfunc \Sigma^{\omega} \rightarrow M$ & partial function            \\
-\code{\partfunc}                  & \code!$\partfuncdefn[\delta]{\Sigma^{\omega}}{M}$!      & $\partfuncdefn[\delta]{\Sigma^{\omega}}{M}$      &                             \\
-\code{\halts}                     & \code!$\halts{P(a_1, a_2, \ldots)}$!                    & $\halts{P(a_1, a_2, \ldots)}$                    & eventually stops            \\
-\code{\nothalts}                  & \code!$\nothalts{P(a_1, a_2, \ldots)}$!                 & $\nothalts{P(a_1, a_2, \ldots)}$                 & never stops                 \\
+\code!\ComputableFunctions!       & \code!$\ComputableFunctions$!                           & $\ComputableFunctions$                           & computable functions        \\
+\code!\PartialRecursiveFunctions! & \code!$\PartialRecursiveFunctions$!                     & $\PartialRecursiveFunctions$                     & partial recursive functions \\
+\code!\partfunc!                  & \code!$\delta \partfunc \Sigma^{\omega} \rightarrow M$! & $\delta \partfunc \Sigma^{\omega} \rightarrow M$ & partial function            \\
+                                  & \code!$\partfuncdefn[\delta]{\Sigma^{\omega}}{M}$!      & $\partfuncdefn[\delta]{\Sigma^{\omega}}{M}$      &                             \\
+\code!\halts!                     & \code!$\halts{P(a_1, a_2, \ldots)}$!                    & $\halts{P(a_1, a_2, \ldots)}$                    & eventually stops            \\
+\code!\nothalts!                  & \code!$\nothalts{P(a_1, a_2, \ldots)}$!                 & $\nothalts{P(a_1, a_2, \ldots)}$                 & never stops                 \\
 \hline
 \caption{Summary of commands and environments defined in \code!lathalesians-computability!}
 \end{longtable}
@@ -897,11 +897,39 @@ Here is how you can include the bibliography in your document:
 
 Then you can \code!\cite{edalat-1998}!, for example, and the result will look like \cite{edalat-1998}.
 
+\section{Nomenclature}
+
+The library comes with precooked nomenclatures (files named \file{lathalesians-nomenclature-xxxxxx.tex}), which can be edited --- extended or truncated --- to provide your readers with lists of symbols:
+\begin{snippet}{LaTeX}
+\makenomenclature
+
+\begin{document}
+
+...
+
+\input{lathalesians-nomenclature-analysis}
+\input{lathalesians-nomenclature-probability}
+\addcontentsline{toc}{section}{Nomenclature}
+\printnomenclature
+
+\end{document} 
+\end{snippet}
+
+Don't forget to call the following, replacing \file{lathalesians} below with the name of your document:
+\begin{snippet}{plain}
+makeindex lathalesians.nlo -s nomencl.ist -o lathalesians.nls
+\end{snippet}
+
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{alpha}
 \bibliography{lathalesians-bibliography}
 
 \printindex{general}{Subject index}
 \printindex{authors}{Index of authors}
+
+\input{lathalesians-nomenclature-analysis}
+\input{lathalesians-nomenclature-probability}
+\addcontentsline{toc}{section}{Nomenclature}
+\printnomenclature
 
 \end{document} 
