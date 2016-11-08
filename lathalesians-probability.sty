@@ -104,6 +104,19 @@
 % Distributed as
 \newcommand{\distributed}{\ \sim \ }
 
+% Uniform distribution (continuous)
+\DeclareDocumentCommand \Uniform { o m m }{%
+    \ensuremath{%
+        \IfNoValueTF {#1}%
+        {%
+            \mathcal{U}\left(#2, #3\right)
+        }%
+        {%
+            \mathcal{U}\left(#1; #2, #3\right)
+        }%
+    }%
+}
+
 % Normal distribution
 \DeclareDocumentCommand \Normal { o m m }{%
     \ensuremath{%
