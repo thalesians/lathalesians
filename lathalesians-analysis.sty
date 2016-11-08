@@ -148,8 +148,8 @@
 \newcommand{\interior}[1]{\ensuremath{#1^\circ}}
 
 % Embedding
-\newcommand{\embed}{\hookrightarrow}
-\newcommand{\embedsinto}{\embed}
+\newcommand{\embed}{\ensuremath{\hookrightarrow}}
+\newcommand{\embedsinto}{\ensuremath{\embed}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Functions
@@ -187,3 +187,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bachmann-Landau (or asymptotic) notations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Big O(micron)
+\newcommand{\bigo}[1]{\ensuremath{{\mathcal{O}\left(#1\right)}}}
+% Big Omega
+\newcommand{\bigomega}[1]{\ensuremath{\Omega\left(#1\right)}}
+% Big Theta
+\newcommand{\bigtheta}[1]{\ensuremath{\Theta\left(#1\right)}}
+% Small O(micron)
+\newcommand{\smallo}[1]{\ensuremath{o\left(#1\right)}}
+% Small Omega
+\newcommand{\smallomega}[1]{\ensuremath{\omega\left(#1\right)}}
+% On the order of
+\newcommand{\orderof}{\ensuremath{\sim}}
