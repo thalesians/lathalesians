@@ -1,6 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{lathalesians-commons}[2016/09/24 LaThalesians Commons]
 
+\typeout{Package lathalesians-commons, %
+    \csname ver@lathalesians-commons.sty\endcsname%
+    ^^J\@spaces\@spaces\@spaces\@spaces\space\space%
+    Copyright (C) Thalesians Ltd^^J}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Use the kvoptions package to process our package's key-value options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -16,6 +22,11 @@
 \DeclareStringOption[.5,0,0]{defncolour}
 \DeclareStringOption[0,0,.5]{anauthorcolour}
 \DeclareStringOption[1,0,0]{nbcolour}
+\DeclareBoolOption[true]{useimakeidx}
+\DeclareBoolOption[true]{usegeneralindex}
+\DeclareStringOption[general]{generalindex}
+\DeclareBoolOption[true]{useauthorsindex}
+\DeclareStringOption[authors]{authorsindex}
 
 \ProcessKeyvalOptions*
 
@@ -25,7 +36,9 @@
 
 % NB: xcolor must be "required" before tikz or pstricks
 \ifLATCOMMONS@usecolour
+    \typeout{* lathalesians-commons: Using colour (usecolour=true)}
 \else
+    \typeout{* lathalesians-commons: Not using colour (usecolour=false)}
     \PassOptionsToPackage{monochrome}{xcolor}
 \fi
 \RequirePackage{xcolor}
@@ -42,8 +55,23 @@
 % \url
 \RequirePackage{url}
 
+% \RequirePackage{imakeidx}
 % \index (e.g. required for \defn)
-\RequirePackage{multind}
+\ifLATCOMMONS@useimakeidx
+    \typeout{* lathalesians-commons: Using imakeidx package (useimakeidx=true)}
+    \RequirePackage{imakeidx}
+\else
+    \ifLATCOMMONS@usegeneralindex
+        \typeout{* lathalesians-commons: useimakeidx=false, so ignoring usegeneralindex}
+        \LATCOMMONS@usegeneralindexfalse
+    \else
+    \fi
+    \ifLATCOMMONS@useauthorsindex
+        \typeout{* lathalesians-commons: useimakeidx=false, so ignoring useauthorsindex}
+        \LATCOMMONS@useauthorsindexfalse
+    \else
+    \fi
+\fi
 
 % \xspace
 \RequirePackage{xspace}
@@ -83,41 +111,49 @@
 % General
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\DeclareDocumentCommand \defn { m o o o o }{%
-    \textcolor[rgb]{\LATCOMMONS@defncolour}{\textbf{#1}}%
-    \IfNoValueTF {#2}%
-    {%
-        \index{general}{#1}%
-    }%
-    {\index{general}{#2}\IfNoValueTF {#3}%
-        {}%
-        {\index{general}{#3}\IfNoValueTF {#4}%
+\ifLATCOMMONS@usegeneralindex%
+    \DeclareDocumentCommand \defn { m o o o o }{%
+        \textcolor[rgb]{\LATCOMMONS@defncolour}{\textbf{#1}}%
+        \IfNoValueTF {#2}%
+        {%
+            \index[\LATCOMMONS@generalindex]{#1}%
+        }%
+        {\index[\LATCOMMONS@generalindex]{#2}\IfNoValueTF {#3}%
             {}%
-            {\index{general}{#4}\IfNoValueTF {#5}%
+            {\index[\LATCOMMONS@generalindex]{#3}\IfNoValueTF {#4}%
                 {}%
-                {\index{general}{#5}}%
+                {\index[\LATCOMMONS@generalindex]{#4}\IfNoValueTF {#5}%
+                    {}%
+                    {\index[\LATCOMMONS@generalindex]{#5}}%
+                }%
             }%
         }%
     }%
-}
+\else%
+    \DeclareDocumentCommand \defn { m o o o o }{\textcolor[rgb]{\LATCOMMONS@defncolour}{\textbf{#1}}}%
+\fi
 
-\DeclareDocumentCommand \anauthor { m o o o o }{%
-    \textcolor[rgb]{\LATCOMMONS@anauthorcolour}{\textbf{#1}}%
-    \IfNoValueTF {#2}%
-    {%
-        \index{authors}{#1}%
-    }%
-    {\index{authors}{#2}\IfNoValueTF {#3}%
-        {}%
-        {\index{authors}{#3}\IfNoValueTF {#4}%
+\ifLATCOMMONS@useauthorsindex%
+    \DeclareDocumentCommand \anauthor { m o o o o }{%
+        \textcolor[rgb]{\LATCOMMONS@anauthorcolour}{\textbf{#1}}%
+        \IfNoValueTF {#2}%
+        {%
+            \index[\LATCOMMONS@authorsindex]{#1}%
+        }%
+        {\index[\LATCOMMONS@authorsindex]{#2}\IfNoValueTF {#3}%
             {}%
-            {\index{authors}{#4}\IfNoValueTF {#5}%
+            {\index[\LATCOMMONS@authorsindex]{#3}\IfNoValueTF {#4}%
                 {}%
-                {\index{authors}{#5}}%
+                {\index[\LATCOMMONS@authorsindex]{#4}\IfNoValueTF {#5}%
+                    {}%
+                    {\index[\LATCOMMONS@authorsindex]{#5}}%
+                }%
             }%
         }%
     }%
-}
+\else%
+    \DeclareDocumentCommand \anauthor { m o o o o }{\textcolor[rgb]{\LATCOMMONS@anauthorcolour}{\textbf{#1}}}%
+\fi
 
 \DeclareDocumentCommand \nb { m }{%
     \textcolor[rgb]{\LATCOMMONS@nbcolour}{\emph{#1}}%
@@ -137,13 +173,21 @@
 % Commands to add entries to indices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\DeclareDocumentCommand \generalindexentry { m }{%
-    \index{general}{#1}%
-}
+\ifLATCOMMONS@usegeneralindex%
+    \DeclareDocumentCommand \generalindexentry { m }{%
+        \index[\LATCOMMONS@generalindex]{#1}%
+    }%
+\else%
+    \DeclareDocumentCommand \generalindexentry { m }{}%
+\fi
 
-\DeclareDocumentCommand \authorsindexentry { m }{%
-    \index{authors}{#1}%
-}
+\ifLATCOMMONS@useauthorsindex%
+    \DeclareDocumentCommand \authorsindexentry { m }{%
+        \index[\LATCOMMONS@authorsindex]{#1}%
+    }%
+\else%
+    \DeclareDocumentCommand \authorsindexentry { m }{}%
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Long and short quote environments
@@ -184,5 +228,4 @@
 % Ditto
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand*{\dittoclosing}{---''---}
-\newcommand*{\dittostraight}{---\textquotedbl---} % available in T1 encoding
+\newcommand*{\ditto}{---''---}
