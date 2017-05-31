@@ -13,9 +13,7 @@
 
 \documentclass[10pt]{article}
 
-\usepackage{multind}
-
-\usepackage[usecolour=true]{lathalesians-commons}
+\usepackage[usecolour=true, useimakeidx=true]{lathalesians-commons}
 \usepackage[usegeometry=true]{lathalesians-formatting}
 \usepackage{lathalesians-font}
 \usepackage{lathalesians-code}
@@ -35,8 +33,8 @@
 \author{Copyright~\copyright~2016, Thalesians Ltd \\
 Copyright \copyright~2016, Paul~Alexander~Bilokon\footnote{Current maintainer, contactable on \textsf{paul@thalesians.com}}}
 
-\makeindex{general}
-\makeindex{authors}
+\makeindex[name=general, title=Subject index]
+\makeindex[name=authors, title=Index of authors]
 
 \makenomenclature
 
@@ -130,31 +128,34 @@ Example:
 \begin{footnotesize}
 \begin{longtable}{llll}
 \hline
-Command                   & Example: code                           & Example: {\LaTeX}ed              & Description                  \\
+Command                   & Example: code                               & Example: {\LaTeX}ed                  & Description                  \\
 \hline
-\code!\LaThalesians!      & \code!\LaThalesians!                    & \LaThalesians                    & the name of this library     \\
-\code!\ol!                & \code!\ol{Thales}!, \code!$\ol{123}$!   & \ol{Thales}, $\ol{123}$          & overline                     \\
-\code!\ul!                & \code!\ul{Thales}!, \code!$\ul{123}$!   & \ul{Thales}, $\ul{123}$          & underline                    \\
-\code!\defn!              & \code!\defn{$G_{\delta}$ set}!          & \defn{$G_{\delta}$ set}          & definition                   \\
-                          &                                         &                                  & (see details below)          \\
-\code!\anauthor!          & \code!\anauthor{Georg~Cantor}!          & \anauthor{Georg~Cantor}[]        & reference to an author       \\
-                          &                                         &                                  & (see details below)          \\
-\code!\generalindexentry! & see below                               & see below                        & general index entry          \\
-\code!\authorsindexentry! & see below                               & see below                        & authors index entry          \\
-\code!\nb!                & \code|\nb{Important!}|                  & \nb{Important!}                  & emphasised text              \\
-\code!\atitle!            & \code|\atitle{Functional Analysis}|     & \atitle{Functional Analysis}     & title of a work              \\
-\code!\commentary!        & \code|\commentary{Some comments.}|      & \commentary{Some comments.}      & comments                     \\
-\code!\species!           & \code|\species{Homo sapiens}|           & \species{Homo sapiens}           & biological species           \\
-\code!\french!            & \code|\french{t{\^e}te-{\`a}-t{\^e}te}| & \french{t{\^e}te-{\`a}-t{\^e}te} & inclusions in French         \\
-\code!\german!            & \code|\german{Grundbegriffe}|           & \german{Grundbegriffe}           & inclusions in German         \\
-\code!\latin!             & \code|\latin{inter alia}|               & \latin{inter alia}               & inclusions in Latin          \\
-\code!\shortquote!        & see below                               & see below                        & environment for short quotes \\
-\code!\longquote!         & see below                               & see below                        & environment for long quotes  \\
-\code!\eg!                & \code|\eg|                              & \eg                              &                              \\
-\code!\etc!               & \code|\etc|                             & \etc                             &                              \\
-\code!\ie!                & \code|\ie|                              & \ie                              &                              \\
-\code!\interalia!         & \code|\interalia|                       & \interalia                       &                              \\
-\code!\viz!               & \code|\viz|                             & \viz                             &                              \\
+\code!\LaThalesians!      & \code!\LaThalesians!                        & \LaThalesians                        & the name of this library     \\
+\code!\ol!                & \code!\ol{Thales}!, \code!$\ol{123}$!       & \ol{Thales}, $\ol{123}$              & overline                     \\
+\code!\ul!                & \code!\ul{Thales}!, \code!$\ul{123}$!       & \ul{Thales}, $\ul{123}$              & underline                    \\
+\code!\defn!              & \code!\defn{$G_{\delta}$ set}!              & \defn{$G_{\delta}$ set}              & definition                   \\
+                          &                                             &                                      & (see details below)          \\
+\code!\anauthor!          & \code!\anauthor{Georg~Cantor}!              & \anauthor{Georg~Cantor}[]            & reference to an author       \\
+                          &                                             &                                      & (see details below)          \\
+\code!\generalindexentry! & see below                                   & see below                            & general index entry          \\
+\code!\authorsindexentry! & see below                                   & see below                            & authors index entry          \\
+\code!\nb!                & \code|\nb{Important!}|                      & \nb{Important!}                      & emphasised text              \\
+\code!\atitle!            & \code|\atitle{Functional Analysis}|         & \atitle{Functional Analysis}         & title of a work              \\
+\code!\commentary!        & \code|\commentary{Some comments.}|          & \commentary{Some comments.}          & comments                     \\
+\code!\species!           & \code|\species{Homo sapiens}|               & \species{Homo sapiens}               & biological species           \\
+\code!\french!            & \code|\french{t{\^e}te-{\`a}-t{\^e}te}|     & \french{t{\^e}te-{\`a}-t{\^e}te}     & inclusions in French         \\
+\code!\german!            & \code|\german{Grundbegriffe}|               & \german{Grundbegriffe}               & inclusions in German         \\
+\code!\latin!             & \code|\latin{inter alia}|                   & \latin{inter alia}                   & inclusions in Latin          \\
+\code!\shortquote!        & see below                                   & see below                            & environment for short quotes \\
+\code!\longquote!         & see below                                   & see below                            & environment for long quotes  \\
+\code!\eg!                & \code|\eg|                                  & \eg                                  &                              \\
+\code!\etc!               & \code|\etc|                                 & \etc                                 &                              \\
+\code!\ie!                & \code|\ie|                                  & \ie                                  &                              \\
+\code!\interalia!         & \code|\interalia|                           & \interalia                           &                              \\
+\code!\viz!               & \code|\viz|                                 & \viz                                 &                              \\
+\code!\Reg!               & \code|FINRA\Reg|                            & FINRA\Reg                            &                              \\
+\code!\TM!                & \code|TRACE\TM|                             & TRACE\TM                             &                              \\
+\code!\Copy!              & \code|Copyright \Copy 2017 Thalesians Ltd.| & Copyright \Copy 2017 Thalesians Ltd. &                              \\
 \hline
 \caption{Summary of commands and environments defined in \program!lathalesians-commons!}
 \end{longtable}
@@ -226,12 +227,12 @@ will add \code{<index entry>} to the index called \code{authors} without adding 
 
 \subsubsection{Building indices}
 
-Here is an example of how you can include the indices in your document. Notice that, for the indices to work, you need the package \program{multind}.
+Here is an example of how you can include the indices in your document. Notice that, for the indices to work, you need the package \program{imakeidx}.
 \begin{snippet}{LaTeX}
-\usepackage{multind}
+\usepackage[useimakeidx=true]{lathalesians-commons}
 
-\makeindex{general}
-\makeindex{authors}
+\makeindex[name=general, title=Subject index]
+\makeindex[name=authors, title=Index of authors]
 
 \begin{document}
 
@@ -241,8 +242,8 @@ Here is an example of how you can include the indices in your document. Notice t
 \bibliographystyle{alpha}
 \bibliography{lathalesians-bibliography}
 
-\printindex{general}{Subject index}
-\printindex{authors}{Index of authors}
+\printindex[general]
+\printindex[authors]
 
 \end{document}
 \end{snippet}
@@ -924,8 +925,8 @@ makeindex lathalesians.nlo -s nomencl.ist -o lathalesians.nls
 \bibliographystyle{alpha}
 \bibliography{lathalesians-bibliography}
 
-\printindex{general}{Subject index}
-\printindex{authors}{Index of authors}
+\printindex[general]
+\printindex[authors]
 
 \input{lathalesians-nomenclature-analysis}
 \input{lathalesians-nomenclature-linear}
@@ -933,4 +934,4 @@ makeindex lathalesians.nlo -s nomencl.ist -o lathalesians.nls
 \addcontentsline{toc}{section}{Nomenclature}
 \printnomenclature
 
-\end{document}
+\end{document} 
