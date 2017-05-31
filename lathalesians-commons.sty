@@ -39,7 +39,10 @@
     \typeout{* lathalesians-commons: Using colour (usecolour=true)}
 \else
     \typeout{* lathalesians-commons: Not using colour (usecolour=false)}
-    \PassOptionsToPackage{monochrome}{xcolor}
+    %\PassOptionsToPackage{monochrome}{xcolor}
+    \def\LATCOMMONS@defncolour{0,0,0}
+    \def\LATCOMMONS@anauthorcolour{0,0,0}
+    \def\LATCOMMONS@nbcolour{0,0,0}
 \fi
 \RequirePackage{xcolor}
 
