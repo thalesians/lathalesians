@@ -81,6 +81,10 @@
 % The above package addresses the problem described in
 % http://tex.stackexchange.com/questions/17872/problem-with-newcommand-no-space-after-calling-new-command-in-the-compiled-tex
 
+% \Reg, \TM, \Copy
+\RequirePackage{textcomp}
+\RequirePackage{relsize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Vanity: by analogy with \TeX and \LaTeX, we define \LaThalesians
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -232,3 +236,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand*{\ditto}{---''---}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Registered, trade marks, copyright
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Reg}{\textsuperscript{\relsize{-2}\textregistered}\xspace}
+\newcommand{\TM}{\textsuperscript{\textsf{\relsize{-2}TM}}\xspace}
+\newcommand{\Copy}{\textcopyright\xspace}
