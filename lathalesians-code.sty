@@ -121,8 +121,16 @@
         {\lstinline[style=lathalesiansbase]}%
         {\lstinline[style=lathalesiansbase,#1]}%
 }
-\DeclareDocumentCommand\program{}{\texttt}
-\DeclareDocumentCommand\file{}{\texttt}
+\DeclareDocumentCommand\program{o}{%
+    \IfNoValueTF{#1}%
+        {\lstinline[style=lathalesiansbase]}%
+        {\lstinline[style=lathalesiansbase,#1]}%
+}
+\DeclareDocumentCommand\file{o}{%
+    \IfNoValueTF{#1}%
+        {\lstinline[style=lathalesiansbase]}%
+        {\lstinline[style=lathalesiansbase,#1]}%
+}
 
 
 \lstnewenvironment{snippet}[2][]{%
