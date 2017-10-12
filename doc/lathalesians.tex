@@ -30,8 +30,8 @@
 \usepackage{url}
 
 \title{\LaThalesians: The Thalesians' \LaTeX~library}
-\author{Copyright~\copyright~2016, Thalesians Ltd \\
-Copyright \copyright~2016, Paul~Alexander~Bilokon\footnote{Current maintainer, contactable on \textsf{paul@thalesians.com}}}
+\author{Copyright~\copyright~2016--2017, Thalesians Ltd \\
+Copyright \copyright~2016--2017, Paul~Alexander~Bilokon\footnote{Current maintainer, contactable on \textsf{paul@thalesians.com}}}
 
 \makeindex[name=general, title=Subject index]
 \makeindex[name=authors, title=Index of authors]
@@ -887,7 +887,7 @@ or
 \begin{snippet}{LaTeX}
 <authorsurname>-<year>-<number>
 \end{snippet}
-The \code{<authorsurname>} is the surname of the first author in lower case and without any spaces, dashes, \etc, \eg: \code{edalat}, \code{vanmill}. The \code{year} is in the \code{yyyy} format, \eg 2016. The number is included only when there is a clash, thus we have \code{edalat-1998}, \code{edalat-1998-1}, and \code{edalat-1998-2}.
+The \code{<authorsurname>} is the surname of the first author in lower case and without any spaces, dashes, \etc, \eg: \code{edalat}, \code{vanmill}. The \code{year} is in the \code{yyyy} format, \eg 2017. The number is included only when there is a clash, thus we have \code{edalat-1998}, \code{edalat-1998-1}, and \code{edalat-1998-2}.
 
 Here is how you can include the bibliography in your document:
 \begin{snippet}{LaTeX}
@@ -927,7 +927,7 @@ makeindex lathalesians.nlo -s nomencl.ist -o lathalesians.nls
 
 \printindex[general]
 \printindex[authors]
-
+\newpage
 \input{lathalesians-nomenclature-analysis}
 \input{lathalesians-nomenclature-linear}
 \input{lathalesians-nomenclature-probability}
