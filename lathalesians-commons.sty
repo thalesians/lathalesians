@@ -21,6 +21,7 @@
 \DeclareBoolOption[true]{usecolour}
 \DeclareStringOption[.5,0,0]{defncolour}
 \DeclareStringOption[0,0,.5]{anauthorcolour}
+\DeclareStringOption[0,.5,0]{atitlecolour}
 \DeclareStringOption[1,0,0]{nbcolour}
 \DeclareBoolOption[true]{useimakeidx}
 \DeclareBoolOption[true]{usegeneralindex}
@@ -42,6 +43,7 @@
     %\PassOptionsToPackage{monochrome}{xcolor}
     \def\LATCOMMONS@defncolour{0,0,0}
     \def\LATCOMMONS@anauthorcolour{0,0,0}
+    \def\LATCOMMONS@atitlecolour{0,0,0}
     \def\LATCOMMONS@nbcolour{0,0,0}
 \fi
 \RequirePackage{xcolor}
@@ -166,7 +168,9 @@
     \textcolor[rgb]{\LATCOMMONS@nbcolour}{\emph{#1}}%
 }
 
-\newcommand{\atitle}{\textit}
+\DeclareDocumentCommand \atitle { m }{%
+    \textcolor[rgb]{\LATCOMMONS@atitlecolour}{\emph{#1}}%
+}
 
 \newcommand{\commentary}{\textit}
 
