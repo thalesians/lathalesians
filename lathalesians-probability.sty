@@ -86,6 +86,16 @@
         }
 }
 
+% Standard deviation
+\DeclareDocumentCommand \SD { o o }{
+    \IfNoValueTF {#1}
+        {\ensuremath{\mathsf{SD}}}
+        {\IfNoValueTF {#2}
+            {\ensuremath{\mathsf{SD}\left[ #1 \right]}}
+            {\ensuremath{\mathsf{SD}_{#2}\left[ #1 \right]}}
+        }
+}
+
 % Covariance
 \DeclareDocumentCommand \Cov { o o }{
     \IfNoValueTF {#1}
